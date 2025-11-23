@@ -9,8 +9,8 @@ This Platformio Project Repository utilizes the [AZ-Delivery ATTiny85 Digispark 
 
 ### Be sure to test your payloads in a safe and legal environment!
 
-# Disclaimer
-This project is intended for authorised securitz testing and educational purposes only. Unauthorized use of this device on systems without explicit permission is illegal and unethical. The author does NOT endorse and is NOT responsible for any misuse or damage caused by improper use of the code and examples in this project.
+# :warning: Disclaimer 
+This project is intended for authorised security testing and educational purposes only. Unauthorized use of this device on systems without explicit permission is illegal and unethical. The author does NOT endorse and is NOT responsible for any misuse or damage caused by improper use of the code and examples in this project.
 
 
 ## Features
