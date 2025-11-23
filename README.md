@@ -1,6 +1,6 @@
 # ATTiny85 Ducky
 
-### A CheapDisposable Alternative to the Hak5 USB RubberDucky
+### A Cheap Disposable Alternative to the Hak5 USB RubberDucky
 
 This Platformio Project Repository transforms the AZ-Delivery ATTiny85 Digispark Rev.3 Kickstarter into a USB RubberDucky-like device capable of executing pre-programmed keystroke injection attacks. It leverages the DigiKeyboardMultilang library to simulate keyboard inputs, allowing for versatile payload delivery.
 
