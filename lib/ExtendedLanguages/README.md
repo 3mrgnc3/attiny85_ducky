@@ -6,6 +6,22 @@ Extended keyboard layouts for DigiKeyboardMultilang library on ATTiny85 Digispar
 
 This library extends the [DigiKeyboardMultilang](https://github.com/josefkuchar/DigiKeyboardMultilang) library by providing additional international keyboard layouts without modifying the upstream library. It maintains full compatibility with the original library while adding support for keyboards not included in the base distribution.
 
+### Extended Key Definitions
+
+This library also provides convenient key code aliases:
+
+- **`KEY_MOD_GUI`** - Alias for Windows/Command/Super key (value: `0x08`)
+  - Use instead of the raw hex value `0x08` for better code readability
+  - Equivalent to `KEY_MOD_LMETA` in the USB HID specification
+  - Works cross-platform: Windows key, macOS Command key, Linux Super key
+
+Example:
+```cpp
+// Both are equivalent, but KEY_MOD_GUI is more readable:
+keyboard.sendKeyStroke(KEY_R, KEY_MOD_GUI);  // Win+R
+keyboard.sendKeyStroke(KEY_R, 0x08);         // Same thing
+```
+
 ## Supported Layouts
 
 - **German (QWERTZ)** - `lang_de`

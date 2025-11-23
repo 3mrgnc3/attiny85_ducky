@@ -4,6 +4,12 @@
 #include <Arduino.h>
 #include <DigiKeyboardMultilang.h>
 
+// Extended key definitions
+// These provide convenient aliases for commonly used keys
+#ifndef KEY_MOD_GUI
+#define KEY_MOD_GUI 0x08  // Windows/Command/Super key (same as KEY_MOD_LMETA)
+#endif
+
 // Extended language declarations
 // These extend DigiKeyboardMultilang's built-in languages (us, cs, csq)
 // without modifying the upstream library

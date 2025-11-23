@@ -13,7 +13,7 @@ The default example payload here opens the Windows Run dialog and types a URL to
 
 */
 
-const char* runCmdPld = "https://github.com/3mrgnc3/attiny85_ducky"; // ScattRoll URL Example
+const char* runCmdPld = "https://github.com/3mrgnc3/attiny85_ducky"; // Open URL Example
 
 int redLED = 1;
 
@@ -23,7 +23,7 @@ void setup() {
     
     // --- THE HID INJECTION STARTS HERE ---
     keyboard.delay(6000); // Wait 6 seconds to allow the OS to recognize the device and install drivers if needed
-    keyboard.sendKeyStroke(KEY_R, KEY_E); // Win+R (0x08 = Left GUI/Windows key modifier)
+    keyboard.sendKeyStroke(KEY_R, KEY_MOD_GUI); // Win+R (KEY_MOD_GUI = Windows/Command key provided by ExtendedLanguages)
     keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
     keyboard.println(runCmdPld); // Opens the Project Github URL using the run dialog
     // --- THE HID INJECTION ENDS HERE ---

@@ -14,7 +14,7 @@ void setup() {
     
     // --- THE HID INJECTION STARTS HERE ---
     keyboard.delay(6000); // Wait 6 seconds to allow the OS to recognize the device and install drivers if needed
-    keyboard.sendKeyStroke(KEY_X, 0x08); // Win+x (0x08 = Left GUI/Windows key modifier)
+    keyboard.sendKeyStroke(KEY_X, KEY_MOD_GUI); // Win+X (KEY_MOD_GUI = Windows/Command key)
     keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
     keyboard.println("a"); // Open a RickRoll url in the run dialog
     keyboard.delay(800); // Wait 0.8 seconds for the browser to open
