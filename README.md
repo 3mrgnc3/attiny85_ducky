@@ -161,6 +161,15 @@ Else, further inspiration for creating your payloads can be found by alternative
 
 ----
 
-Have Fun 
+## Some Useful Links
+- [NULLByte - How to Run USB Rubber Ducky Scripts](https://null-byte.wonderhowto.com/how-to/run-usb-rubber-ducky-scripts-super-inexpensive-digispark-board-0198484/) 
+- [AZ-Delivery ATTiny85 Digispark Rev.3 Kickstarter Board](https://www.az-delivery.de/en/products/digispark-board)
+- [DigiKeyboardMultilang Library by josefkuchar](https://github.com/josefkuchar/DigiKeyboardMultilang)
+- [CedArctic - DigiSpark-Scripts Repository](https://github.com/CedArctic/DigiSpark-Scripts)
+- [Digistump Wiki](https://web.archive.org/web/20240229063724/https://digistump.com/wiki/digispark/tutorials/connecting)
+- [PlatformIO Documentation](https://docs.platformio.org/)
+
+
+## Enjoy & Have Fun 
 
 ![ATTiny85 Ducky](images/rev3_board.png)
