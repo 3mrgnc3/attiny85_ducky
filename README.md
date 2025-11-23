@@ -159,10 +159,7 @@ Else, further inspiration for creating your payloads can be found by alternative
 - `lang_gr` - Greek (from ExtendedLanguages)
 - More layouts available in the DigiKeyboardMultilang library documentation
 
-## Troubleshooting
-
-Driver issues, upload problems, and other common issues can be found in the [Troubleshooting & FAQ](Troubleshooting-FAQ.md) wiki page.
-
+----
 
 Have Fun 
 
