@@ -162,3 +162,8 @@ Else, further inspiration for creating your payloads can be found by alternative
 ## Troubleshooting
 
 Driver issues, upload problems, and other common issues can be found in the [Troubleshooting & FAQ](Troubleshooting-FAQ.md) wiki page.
+
+
+Have Fun 
+
+![ATTiny85 Ducky](images/rev3_board.png)
