@@ -6,6 +6,13 @@ This Platformio Project Repository utilizes the [AZ-Delivery ATTiny85 Digispark 
 
 ![ATTiny85 Ducky](images/rev3.png)
 
+
+### Be sure to test your payloads in a safe and legal environment!
+
+# Disclaimer
+This project is intended for authorised securitz testing and educational purposes only. Unauthorized use of this device on systems without explicit permission is illegal and unethical. The author does NOT endorse and is NOT responsible for any misuse or damage caused by improper use of the code and examples in this project.
+
+
 ## Features
 - Utilizes the DigiKeyboardMultilang library for multi-language keyboard support.
 - **ExtendedLanguages library** - Custom library that extends DigiKeyboardMultilang with additional keyboard layouts for German, French, and Greek Keyboards
@@ -14,13 +21,48 @@ This Platformio Project Repository utilizes the [AZ-Delivery ATTiny85 Digispark 
 
 ## Getting Started
 1. Clone this repository to your local machine.
-3. Open the included project workspace file `attiny85_ducky.code-workspace` in Visual Studio Code.
+
+```
+git clone https://github.com/yourusername/attiny85_ducky.git
+
+```
+
+
+2. Open the included project workspace file `attiny85_ducky.code-workspace` in [Visual Studio Code](https://code.visualstudio.com/).
+
+```
+cd attiny85_ducky
+code .vscode/attiny85_ducky.code-workspace
+```
+
 3. Install the [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [PlatformIO IDE VS Code Extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) if you haven't already. (see: [PlatformIO Intsall Guide](https://platformio.org/install/ide?install=vscode)
-4. In the PlatformIO toolbar, click the `build` button to ensure that the build works and does an auto-setup / download of the **digispark-tiny** and **DigiKeyboardMultilang** code to the `.pio` directory in the project.
-5. ONLY IF build says it SUCCEEDS, proceed to try uploading: using the `upload` button in the PlatformIO toolbar with the DigiSpark ATTiny85 device disconnected. you have 60 seconds to connect the device where it's bootloader is listening for upload.
-6. Once uploaded, the device will execute the pre-programmed payload when plugged into a target machine.
+
+![C/C++ Extension Pack](images/cpp_extension_pack.png)
+![PlatformIO IDE](images/platformio_ide.png)
+
+
+4. It is recommended to try out the default payload first to check that everything is working. This is in the `src/main.cpp` file by default and opens the GitHub project URL in the default browser. this is that same payload provide in the `examples/DemoOpenProjectRepo/` directory.
+
+5. Once the demo payload was successful, you should then proceed to modify the payload or try out other example payloads provided in the `examples/` directory. The simplest way to do this is to copy the `main.cpp` file from the example folder you want to try into the `src/` directory, replacing the existing `main.cpp` file. When developing your own payloads, you can refer to the example payloads for guidance, but should start by modifiying the lines afther the commend line `// --- THE HID INJECTION STARTS HERE ---` to create the loging of your HID injection commands. custom values such as string parameters can be set in the top of the file. e.g. `const char* runCmdPld = "https://youtu.be/Hy8kmNEo1i8";` or `cmd.exe /c netsh wlan show profile` etc.
+
+6. In the PlatformIO toolbar, click the `build` button to ensure that the build works and does an auto-setup / download of the **digispark-tiny** and **DigiKeyboardMultilang** code to the `.pio` directory in the project.
+![Build Button](images/build_test.png)
+
+7. ONLY IF build says it `SUCCESS`, proceed to try uploading: 
+IMPORTANT!: `Disconnect the DigiSpark ATTiny85 device`, the without anything plugged in using the `upload` button in the PlatformIO toolbar. 
+![Upload Button](images/upload_button.png)
+
+8. You have 60 seconds to connect the device where its bootloader is listening for upload.
+![Connect Device](images/connect_device.png)
+
+9. Once uploaded, the device will execute the pre-programmed payload when plugged into a target machine. The default provided and all the example payloads are designed for Windows systems and will pause for 6 seconds to allow the OS to recognize the device and auto-install any required drivers before executing the payload. If you don'y want to execute the payload immediately, you simply need to unplug it within 6 secomd of the RED LED lighting up.
+7. 
+
 ## Customization
 To customize the payload, modify the `setup()` and `loop()` functions in `src/main.cpp`. 
+
+In addition to the 6 second delay before payload execution, you can also add your own delays in the payload code itself using `keyboard.delay(ms);` where `ms` is the number of milliseconds to wait.
+
 
 -----
 ## Simple Example Payload to execute a ScattRoll URL on Windows:
@@ -71,43 +113,6 @@ Else you can alternatively check out the preexisting ones made available already
 - `lang_fr` - French AZERTY (from ExtendedLanguages)
 - `lang_gr` - Greek (from ExtendedLanguages)
 - More layouts available in the DigiKeyboardMultilang library documentation
-
-Now you can plug in the device to a Windows machine, and it will open the RickRoll URL in the default web browser after a short delay.
-
-## Project Structure
-
-```
-attiny85_ducky/
-├── src/
-│   └── main.cpp              # Main payload (currently: GitHub project link)
-├── lib/
-│   └── ExtendedLanguages/    # Custom keyboard layout library
-│       ├── src/
-│       │   ├── extendedLanguages.h  # Header file
-│       │   ├── de.cpp        # German QWERTZ layout
-│       │   ├── fr.cpp        # French AZERTY layout
-│       │   └── gr.cpp        # Greek layout
-│       ├── README.md         # Library documentation
-│       └── library.json      # Library manifest
-├── examples/
-│   └── YTRoll/
-│       └── main.cpp          # YouTube RickRoll payload example
-├── platformio.ini            # PlatformIO configuration
-└── README.md                 # This file
-```
-
-## Recent Updates
-
-### Version 1.0.0 (November 2024)
-- ✅ Created ExtendedLanguages library with German QWERTZ, French AZERTY, and Greek layouts
-- ✅ Added YTRoll example payload (YouTube RickRoll with fullscreen)
-- ✅ Fixed include paths in ExtendedLanguages library (changed from `languages/languages.h` to `extendedLanguages.h`) to prevent confusion between similar library names
-- ✅ Removed references to incorrect upstream language files (cs.cpp, csq.cpp, us.cpp) that had wrong include paths
-- ✅ Updated main.cpp to use GitHub project URL instead of RickRoll
-- ✅ Successfully tested German QWERTZ layout on Digispark Rev3 Kickstarter hardware
-
------
-
 
 ### Be sure to test your payloads in a safe and legal environment!
 

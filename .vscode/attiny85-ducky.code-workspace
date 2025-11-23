@@ -7,9 +7,10 @@
 	"settings": {},
 	"extensions": {
 		"recommendations": [
-			"ms-vscode.cpptools-themes",
-			"ms-vscode.cpptools-extension-pack",
-			"platformio.platformio-ide"
-		]
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-themes",
+        "ms-vscode.cpptools-extension-pack",
+        "platformio.platformio-ide"
+    ]
 	}
 }
