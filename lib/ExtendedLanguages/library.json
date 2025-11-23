@@ -1,0 +1,36 @@
+{
+  "name": "ExtendedLanguages",
+  "version": "1.0.0",
+  "description": "Extended keyboard layouts for DigiKeyboardMultilang library - adds support for German QWERTZ and other international keyboard layouts",
+  "keywords": [
+    "keyboard",
+    "hid",
+    "usb",
+    "multilang",
+    "attiny85",
+    "digispark",
+    "german",
+    "qwertz",
+    "rubberducky"
+  ],
+  "authors": [
+    {
+      "name": "ATTiny85 Ducky Project",
+      "maintainer": true
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/3mrgnc3/attiny85_ducky"
+  },
+  "dependencies": {
+    "josefkuchar/DigiKeyboardMultilang": "^1.1.1"
+  },
+  "frameworks": "arduino",
+  "platforms": "atmelavr",
+  "export": {
+    "include": [
+      "src"
+    ]
+  }
+}

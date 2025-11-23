@@ -7,13 +7,24 @@ This Platformio Project Repository transforms the AZ-Delivery ATTiny85 Digispark
 ![ATTiny85 Ducky](rev3.png)
 
 ## Features
-- Utilizes the DigiKeyboardMultilang library for *multi-language keyboard support (no DE Lang yet).
+- Utilizes the DigiKeyboardMultilang library for multi-language keyboard support.
+- **ExtendedLanguages library** - Custom library that extends DigiKeyboardMultilang with additional keyboard layouts:
+  - ✅ **German (QWERTZ)** - Full support including umlauts (ä, ö, ü, ß) and AltGr combinations
+  - ✅ **French (AZERTY)** - Full AZERTY layout with French special characters
+  - ✅ **Greek** - Greek keyboard layout for Latin character input
+  - More layouts coming soon...
 - Simple setup and programming process using the PlatformIO project environment provided.
-- A selection of pre-programmed payload `examples` are provided for common attack vectors, easily customizable.
+- **Example Payloads** - Pre-configured examples in the `examples/` directory:
+  - `YTRoll/main.cpp` - YouTube RickRoll payload with fullscreen
 
 ## Roadmap
-- [ ] Add support for additional keyboard layouts (e.g., German, French).
-- [ ] include more complex payload examples.
+- [x] ~~Add support for German keyboard layout~~ ✅ **COMPLETED**
+- [x] ~~Add support for French keyboard layout~~ ✅ **COMPLETED**
+- [x] ~~Add support for Greek keyboard layout~~ ✅ **COMPLETED**
+- [x] ~~Create example payloads (YTRoll)~~ ✅ **COMPLETED**
+- [x] ~~Clean up incorrect upstream library files~~ ✅ **COMPLETED**
+- [ ] Add support for additional keyboard layouts (Spanish, Italian, Portuguese, etc.)
+- [ ] Include more complex payload examples (credential harvesting, reverse shell, etc.)
 - [ ] Include customizable micronucleus bootloader with modifiable USB VID/PID & vendor/device names for stealth.
 
 ## Getting Started
@@ -27,31 +38,34 @@ This Platformio Project Repository transforms the AZ-Delivery ATTiny85 Digispark
 To customize the payload, modify the `setup()` and `loop()` functions in `src/main.cpp`. 
 
 -----
-## Simple Example Payload to execute a RickRoll URL on Windows:
+## Simple Example Payload to execute a ScattRoll URL on Windows:
 
 Modify the `src/main.cpp` file as follows:
 
 ```cpp
 #include <Arduino.h>
 #include <DigiKeyboardMultilang.h>
+#include <extendedLanguages.h> // Include ExtendedLanguages for additional layouts
 
-DigiKeyboardMultilang keyboard(lang_us); // IMPORTANT Declare keyboard layout! e.g., lang_us for US English
+DigiKeyboardMultilang keyboard(lang_de); // Use lang_de for German QWERTZ layout (or lang_us for US English)
 
-const char* runCmdPld = "https://youtu.be/dQw4w9WgXcQ"; // RickRoll URL Example
+const char* runCmdPld = "https://youtu.be/Hy8kmNEo1i8"; // ScattRoll URL Example
 
 int redLED = 1;
 
 void setup() {
     pinMode(redLED, OUTPUT); // Initialize the RED LED pin as an output
     digitalWrite(redLED, HIGH); // Turn on the RED LED while executing payload
+    
     // --- THE HID PAYLOAD STARTS HERE ---
     keyboard.delay(5000); // Wait 5 seconds to allow the OS to recognize the device
     keyboard.sendKeyStroke(KEY_R, 0x08); // Win+R (0x08 = Left GUI/Windows key modifier)
     keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
-    keyboard.println(runCmdPld); // Open a RickRoll url in the run dialog
+    keyboard.println(runCmdPld); // Open a ScattRoll URL in the run dialog
     keyboard.delay(3000); // Wait 3 seconds for the browser to open
     keyboard.println("f");// YouTube fullscreen shortcut key = 'f'
     // --- THE HID PAYLOAD ENDS HERE ---
+    
     digitalWrite(redLED, LOW); // Turn off the RED LED after executing payload
 }
 
@@ -61,8 +75,46 @@ void loop() {
 }
 ```
 
+**Available Keyboard Layouts:**
+- `lang_us` - US English (from DigiKeyboardMultilang)
+- `lang_de` - German QWERTZ (from ExtendedLanguages) ✅ **TESTED & WORKING**
+- `lang_fr` - French AZERTY (from ExtendedLanguages)
+- `lang_gr` - Greek (from ExtendedLanguages)
+- More layouts available in the DigiKeyboardMultilang library documentation
+
 Now you can plug in the device to a Windows machine, and it will open the RickRoll URL in the default web browser after a short delay.
 
+## Project Structure
+
+```
+attiny85_ducky/
+├── src/
+│   └── main.cpp              # Main payload (currently: GitHub project link)
+├── lib/
+│   └── ExtendedLanguages/    # Custom keyboard layout library
+│       ├── src/
+│       │   ├── extendedLanguages.h  # Header file
+│       │   ├── de.cpp        # German QWERTZ layout
+│       │   ├── fr.cpp        # French AZERTY layout
+│       │   └── gr.cpp        # Greek layout
+│       ├── README.md         # Library documentation
+│       └── library.json      # Library manifest
+├── examples/
+│   └── YTRoll/
+│       └── main.cpp          # YouTube RickRoll payload example
+├── platformio.ini            # PlatformIO configuration
+└── README.md                 # This file
+```
+
+## Recent Updates
+
+### Version 1.0.0 (November 2024)
+- ✅ Created ExtendedLanguages library with German QWERTZ, French AZERTY, and Greek layouts
+- ✅ Added YTRoll example payload (YouTube RickRoll with fullscreen)
+- ✅ Fixed include paths in ExtendedLanguages library (changed from `languages/languages.h` to `extendedLanguages.h`) to prevent confusion between similar library names
+- ✅ Removed references to incorrect upstream language files (cs.cpp, csq.cpp, us.cpp) that had wrong include paths
+- ✅ Updated main.cpp to use GitHub project URL instead of RickRoll
+- ✅ Successfully tested German QWERTZ layout on Digispark Rev3 Kickstarter hardware
 
 -----
 
