@@ -32,7 +32,7 @@ Include the library in your PlatformIO project:
 ```cpp
 #include <Arduino.h>
 #include <DigiKeyboardMultilang.h>
-#include <languages.h>  // ExtendedLanguages header
+#include <extendedLanguages.h>  // ExtendedLanguages header
 
 // Use German keyboard layout
 DigiKeyboardMultilang keyboard(lang_de);
