@@ -25,7 +25,7 @@ This Platformio Project Repository transforms the AZ-Delivery ATTiny85 Digispark
 - [x] ~~Clean up incorrect upstream library files~~ ✅ **COMPLETED**
 - [ ] Add support for additional keyboard layouts (Spanish, Italian, Portuguese, etc.)
 - [ ] Include more complex payload examples (credential harvesting, reverse shell, etc.)
-- [ ] Include customizable micronucleus bootloader with modifiable USB VID/PID & vendor/device names for stealth.
+- [ ] Include customizable micronucleus bootloader with modifiable USB VID/PID & vendor/device names for increased compatability to auto run with stealth.
 
 ## Getting Started
 1. Clone this repository to your local machine.
@@ -74,6 +74,11 @@ void loop() {
     // you can add code here with your desired logic and delays instead of in setup().
 }
 ```
+
+Further inspriation for creating your payloads can be found in the `./examples/` directory included with this project. 
+
+Else you can alternatively check out the preexisting ones made available already by [**CedArctic** in the **DigiSpark-Scripts** repo](https://github.com/CedArctic/DigiSpark-Scripts). 
+
 
 **Available Keyboard Layouts:**
 - `lang_us` - US English (from DigiKeyboardMultilang)
