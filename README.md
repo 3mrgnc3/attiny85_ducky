@@ -4,33 +4,18 @@
 
 This Platformio Project Repository utilizes the [AZ-Delivery ATTiny85 Digispark Rev.3 Kickstarter](https://www.az-delivery.de/en/products/digispark-board) as a USB RubberDucky-like device capable of executing pre-programmed keystroke injection attacks. It leverages the DigiKeyboardMultilang library to simulate keyboard inputs, allowing for versatile payload delivery.
 
-![ATTiny85 Ducky](rev3.png)
+![ATTiny85 Ducky](images/rev3.png)
 
 ## Features
 - Utilizes the DigiKeyboardMultilang library for multi-language keyboard support.
-- **ExtendedLanguages library** - Custom library that extends DigiKeyboardMultilang with additional keyboard layouts:
-  - ✅ **German (QWERTZ)** - Full support including umlauts (ä, ö, ü, ß) and AltGr combinations
-  - ✅ **French (AZERTY)** - Full AZERTY layout with French special characters
-  - ✅ **Greek** - Greek keyboard layout for Latin character input
-  - More layouts coming soon...
-- Simple setup and programming process using the PlatformIO project environment provided.
-- **Example Payloads** - Pre-configured examples in the `examples/` directory:
-  - `YTRoll/main.cpp` - YouTube RickRoll payload with fullscreen
-
-## Roadmap
-- [x] ~~Add support for German keyboard layout~~ ✅ **COMPLETED**
-- [x] ~~Add support for French keyboard layout~~ ✅ **COMPLETED**
-- [x] ~~Add support for Greek keyboard layout~~ ✅ **COMPLETED**
-- [x] ~~Create example payloads (YTRoll)~~ ✅ **COMPLETED**
-- [x] ~~Clean up incorrect upstream library files~~ ✅ **COMPLETED**
-- [ ] Add support for additional keyboard layouts (Spanish, Italian, Portuguese, etc.)
-- [ ] Include more complex payload examples (credential harvesting, reverse shell, etc.)
-- [ ] Include customizable micronucleus bootloader with modifiable USB VID/PID & vendor/device names for increased compatability to auto run with stealth.
+- **ExtendedLanguages library** - Custom library that extends DigiKeyboardMultilang with additional keyboard layouts for German, French, and Greek Keyboards
+- **Example Payloads** - Pre-configured examples in the `examples/` directory.
+- **Simple setup and programming process** using the PlatformIO project environment provided.
 
 ## Getting Started
 1. Clone this repository to your local machine.
 3. Open the included project workspace file `attiny85_ducky.code-workspace` in Visual Studio Code.
-3. Install the PlatformIO extension if you haven't already. (https://platformio.org/install/ide?install=vscode)
+3. Install the [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [PlatformIO IDE VS Code Extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) if you haven't already. (see: [PlatformIO Intsall Guide](https://platformio.org/install/ide?install=vscode)
 4. In the PlatformIO toolbar, click the `build` button to ensure that the build works and does an auto-setup / download of the **digispark-tiny** and **DigiKeyboardMultilang** code to the `.pio` directory in the project.
 5. ONLY IF build says it SUCCEEDS, proceed to try uploading: using the `upload` button in the PlatformIO toolbar with the DigiSpark ATTiny85 device disconnected. you have 60 seconds to connect the device where it's bootloader is listening for upload.
 6. Once uploaded, the device will execute the pre-programmed payload when plugged into a target machine.
@@ -82,7 +67,7 @@ Else you can alternatively check out the preexisting ones made available already
 
 **Available Keyboard Layouts:**
 - `lang_us` - US English (from DigiKeyboardMultilang)
-- `lang_de` - German QWERTZ (from ExtendedLanguages) ✅ **TESTED & WORKING**
+- `lang_de` - German QWERTZ (from ExtendedLanguages) ✅ **TESTED & WORKING with the examples provided**
 - `lang_fr` - French AZERTY (from ExtendedLanguages)
 - `lang_gr` - Greek (from ExtendedLanguages)
 - More layouts available in the DigiKeyboardMultilang library documentation

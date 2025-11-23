@@ -7,11 +7,11 @@ const uint16_t lang_de[] PROGMEM = {
     KEY_SPACE,                          // " " (32) - space
     KEY_1 | KEY_MOD_LSHIFT,             // "!" (33) - exclamation
     KEY_2 | KEY_MOD_LSHIFT,             // """ (34) - double quote
-    KEY_BACKSLASH | KEY_MOD_LSHIFT,     // "#" (35) - hash/number sign
+    KEY_BACKSLASH,                      // "#" (35) - hash/number sign (on German keyboard, # is the key right of Ä)
     KEY_4 | KEY_MOD_LSHIFT,             // "$" (36) - dollar
     KEY_5 | KEY_MOD_LSHIFT,             // "%" (37) - percent
     KEY_6 | KEY_MOD_LSHIFT,             // "&" (38) - ampersand
-    KEY_BACKSLASH,                      // "'" (39) - single quote/apostrophe
+    KEY_BACKSLASH | KEY_MOD_LSHIFT,     // "'" (39) - single quote/apostrophe (Shift+# key)
     KEY_8 | KEY_MOD_LSHIFT,             // "(" (40) - left parenthesis
     KEY_9 | KEY_MOD_LSHIFT,             // ")" (41) - right parenthesis
     KEY_RIGHTBRACE | KEY_MOD_LSHIFT,    // "*" (42) - asterisk
@@ -64,7 +64,7 @@ const uint16_t lang_de[] PROGMEM = {
     KEY_Z | KEY_MOD_LSHIFT,             // "Y" (89) - QWERTZ: Y/Z swapped
     KEY_Y | KEY_MOD_LSHIFT,             // "Z" (90) - QWERTZ: Y/Z swapped
     KEY_8 | KEY_MOD_RALT,               // "[" (91) - left bracket (AltGr+8)
-    KEY_MINUS | KEY_MOD_RALT,           // "\" (92) - backslash (AltGr+ß)
+    KEY_MINUS | KEY_MOD_RALT,           // "\\" (92) - backslash (AltGr+ß, ß is on MINUS key position)
     KEY_9 | KEY_MOD_RALT,               // "]" (93) - right bracket (AltGr+9)
     KEY_GRAVE,                          // "^" (94) - caret (dead key on German keyboard)
     KEY_SLASH | KEY_MOD_LSHIFT,         // "_" (95) - underscore
