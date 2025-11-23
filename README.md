@@ -2,7 +2,9 @@
 
 ### A CheapDisposable Alternative to the Hak5 USB RubberDucky
 
-This project transforms the DigiSpark ATTiny85 microcontroller into a USB RubberDucky-like device capable of executing pre-programmed keystroke injection attacks. It leverages the DigiKeyboardMultilang library to simulate keyboard inputs, allowing for versatile payload delivery.
+This Platformio Project Repository transforms the AZ-Delivery ATTiny85 Digispark Rev.3 Kickstarter into a USB RubberDucky-like device capable of executing pre-programmed keystroke injection attacks. It leverages the DigiKeyboardMultilang library to simulate keyboard inputs, allowing for versatile payload delivery.
+
+![ATTiny85 Ducky](rev3.png)
 
 ## Features
 - Utilizes the DigiKeyboardMultilang library for *multi-language keyboard support (no DE Lang yet).
@@ -26,6 +28,9 @@ To customize the payload, modify the `setup()` and `loop()` functions in `src/ma
 
 -----
 ## Simple Example Payload to execute a RickRoll URL on Windows:
+
+Modify the `src/main.cpp` file as follows:
+
 ```cpp
 #include <Arduino.h>
 #include <DigiKeyboardMultilang.h>
@@ -51,9 +56,12 @@ void setup() {
 }
 
 void loop() {
-    // the loop function is intentionally left empty but if zou want to repeat the payload, you can add code here.
+    // the loop function is intentionally left empty But if you want to repeat the payload,
+    // you can add code here with your desired logic and delays instead of in setup().
 }
 ```
+
+Now you can plug in the device to a Windows machine, and it will open the RickRoll URL in the default web browser after a short delay.
 
 
 -----
