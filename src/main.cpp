@@ -14,7 +14,7 @@ void setup() {
     
     // --- THE HID INJECTION STARTS HERE ---
     keyboard.delay(3000); // Wait 3 seconds to allow the OS to recognize the device
-    keyboard.sendKeyStroke(KEY_R, 0x08); // Win+R (0x08 = Left GUI/Windows key modifier)
+    keyboard.sendKeyStroke(KEY_R, KEY_E); // Win+R (0x08 = Left GUI/Windows key modifier)
     keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
     keyboard.println(runCmdPld); // Opens the Project Github URL using the run dialog
     // --- THE HID INJECTION ENDS HERE ---
@@ -22,7 +22,7 @@ void setup() {
     digitalWrite(redLED, LOW); // Turn off the RED LED after executing payload
 }
 
-// void loop() {
-//     // the loop function is intentionally left empty But if you want to repeat the payload,
-//     // you can add code here with your desired logic and delays instead of in setup().
-// }
+void loop() {
+    // the loop function is intentionally left empty But if you want to repeat the payload,
+    // you can add code here with your desired logic and delays instead of in setup().
+}
