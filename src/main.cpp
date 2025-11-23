@@ -13,7 +13,7 @@ The default example payload here opens the Windows Run dialog and types a URL to
 
 */
 
-const char* runCmdPld = "https://github.com/3mrgnc3/attiny85_ducky"; // Open URL Example
+const char* runCmdPld = "https://github.com/3mrgnc3/attiny85_ducky?tab=readme-ov-file#attiny85-ducky"; // Open URL Example
 
 int redLED = 1;
 
