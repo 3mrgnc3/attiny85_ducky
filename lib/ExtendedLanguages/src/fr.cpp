@@ -3,6 +3,7 @@
 // French (AZERTY) keyboard layout
 // Based on standard French AZERTY layout
 // Characters are mapped from ASCII 32 (space) to ASCII 126 (~)
+
 const uint16_t lang_fr[] PROGMEM = {
     KEY_SPACE,                          // " " (32) - space
     KEY_SLASH,                          // "!" (33) - exclamation

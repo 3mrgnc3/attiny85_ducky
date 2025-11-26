@@ -1,8 +1,10 @@
 #include "extendedLanguages.h"
 
 // German (QWERTZ) keyboard layout
-// Based on USB Rubber Ducky language file: https://github.com/hak5/usbrubberducky-payloads/blob/master/languages/de.json
+// Based on USB Rubber Ducky language file
+// Ref: https://github.com/hak5/usbrubberducky-payloads/blob/master/languages/de.json
 // Characters are mapped from ASCII 32 (space) to ASCII 126 (~)
+
 const uint16_t lang_de[] PROGMEM = {
     KEY_SPACE,                          // " " (32) - space
     KEY_1 | KEY_MOD_LSHIFT,             // "!" (33) - exclamation

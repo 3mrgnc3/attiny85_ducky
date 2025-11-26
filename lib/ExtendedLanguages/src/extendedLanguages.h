@@ -13,25 +13,33 @@
 // Extended language declarations
 // These extend DigiKeyboardMultilang's built-in languages (us, cs, csq)
 // without modifying the upstream library
-
-// German QWERTZ keyboard layout
+extern const uint16_t lang_us[] PROGMEM;
 extern const uint16_t lang_de[] PROGMEM;
-
-// French AZERTY keyboard layout
 extern const uint16_t lang_fr[] PROGMEM;
-
-// Greek keyboard layout
+extern const uint16_t lang_es[] PROGMEM;
+extern const uint16_t lang_it[] PROGMEM;
+extern const uint16_t lang_pt[] PROGMEM;
 extern const uint16_t lang_gr[] PROGMEM;
-
-// Future language layouts (uncomment when implemented):
-// extern const uint16_t lang_es[] PROGMEM;  // Spanish
-// extern const uint16_t lang_it[] PROGMEM;  // Italian
-// extern const uint16_t lang_pt[] PROGMEM;  // Portuguese
-// extern const uint16_t lang_dk[] PROGMEM;  // Danish
-// extern const uint16_t lang_no[] PROGMEM;  // Norwegian
-// extern const uint16_t lang_se[] PROGMEM;  // Swedish
-// extern const uint16_t lang_fi[] PROGMEM;  // Finnish
-// extern const uint16_t lang_nl[] PROGMEM;  // Dutch
-// extern const uint16_t lang_be[] PROGMEM;  // Belgian
+extern const uint16_t lang_dk[] PROGMEM;
+extern const uint16_t lang_no[] PROGMEM; 
+extern const uint16_t lang_se[] PROGMEM;
+extern const uint16_t lang_fi[] PROGMEM;
+extern const uint16_t lang_be[] PROGMEM;
+extern const uint16_t lang_gb[] PROGMEM;
+extern const uint16_t lang_ch[] PROGMEM;
+extern const uint16_t lang_tr[] PROGMEM;
+extern const uint16_t lang_hr[] PROGMEM;
+extern const uint16_t lang_hu[] PROGMEM;
+extern const uint16_t lang_si[] PROGMEM;
+extern const uint16_t lang_sk[] PROGMEM;
+extern const uint16_t lang_ca[] PROGMEM;
+extern const uint16_t lang_br[] PROGMEM;
+extern const uint16_t lang_mx[] PROGMEM;
+extern const uint16_t lang_ru[] PROGMEM;
+extern const uint16_t lang_nl[] PROGMEM;
+extern const uint16_t lang_ua[] PROGMEM;
+extern const uint16_t lang_bg[] PROGMEM;
+extern const uint16_t lang_pl[] PROGMEM;
+extern const uint16_t lang_ro[] PROGMEM;
 
 #endif

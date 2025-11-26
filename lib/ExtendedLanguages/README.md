@@ -24,22 +24,179 @@ keyboard.sendKeyStroke(KEY_R, 0x08);         // Same thing
 
 ## Supported Layouts
 
-- **German (QWERTZ)** - `lang_de`
-  - Full QWERTZ layout with Y/Z swap
-  - Support for umlauts: ä, ö, ü, ß
-  - AltGr combinations: @, {, [, ], }, \, |, ~, €
-  - Based on USB Rubber Ducky de.json specification
+All layouts support ASCII characters 32-126 (95 printable characters) with proper modifier keys (Shift, AltGr).
+
+### Romance Languages
+
+- **Spanish (ES)** - `lang_es`
+  - Spanish QWERTY layout
+  - AltGr combinations: @(AltGr+2), [(AltGr+`), ](AltGr+'), {(AltGr+Shift+`), }(AltGr+Shift+'), |(AltGr+1), ~(AltGr+4)
+  - Based on USB Rubber Ducky es.json
+
+- **Italian (IT)** - `lang_it`
+  - Italian QWERTY layout
+  - AltGr combinations: #(AltGr+'), @(AltGr+`), [(AltGr+[), ](AltGr+]), {(AltGr+Shift+[), }(AltGr+Shift+]), ~(AltGr+=)
+  - Based on USB Rubber Ducky it.json
+
+- **Portuguese (PT)** - `lang_pt`
+  - Portuguese QWERTY layout
+  - AltGr combinations: @(AltGr+2), [(AltGr+8), ](AltGr+9), {(AltGr+7), }(AltGr+0)
+  - Based on USB Rubber Ducky pt.json
 
 - **French (AZERTY)** - `lang_fr`
-  - Full AZERTY layout with Q/A swap, W/Z swap
-  - Support for French special characters
+  - French AZERTY layout with Q/A swap, W/Z swap
   - AltGr combinations: @, #, [, ], {, }, \, |, ~
   - Based on standard French keyboard layout
+
+### Germanic Languages
+
+- **German (QWERTZ)** - `lang_de`
+  - German QWERTZ layout with Y/Z swap
+  - Support for umlauts: ä, ö, ü, ß
+  - AltGr combinations: @, {, [, ], }, \, |, ~, €
+  - Based on USB Rubber Ducky de.json
+
+- **Swiss German (QWERTZ)** - `lang_ch`
+  - Swiss German QWERTZ layout with Y/Z swap
+  - AltGr combinations: #(AltGr+3), @(AltGr+2), [(AltGr+ü), \(AltGr+<), ](AltGr+¨), {, |, }, ~
+  - Based on USB Rubber Ducky ch.json
+
+### Nordic Languages
+
+- **Danish (DK)** - `lang_dk`
+  - Danish QWERTY layout
+  - Special keys: æ, ø, å
+  - AltGr combinations: $(AltGr+4), @(AltGr+2), [(AltGr+8), \(AltGr+<), ](AltGr+9), {(AltGr+7), |(AltGr+´), }(AltGr+0)
+  - Based on USB Rubber Ducky dk.json
+
+- **Norwegian (NO)** - `lang_no`
+  - Norwegian QWERTY layout
+  - Special keys: æ, ø, å
+  - AltGr combinations: $(AltGr+4), @(AltGr+2), [(AltGr+8), \(AltGr+<), ](AltGr+9), {(AltGr+7), |(AltGr+´), }(AltGr+0)
+  - Based on USB Rubber Ducky no.json
+
+- **Swedish (SE)** - `lang_se`
+  - Swedish QWERTY layout
+  - Special keys: å, ä, ö
+  - AltGr combinations: $(AltGr+4), @(AltGr+2), [(AltGr+8), \(AltGr+<), ](AltGr+9), {(AltGr+7), |(AltGr+´), }(AltGr+0)
+  - Based on USB Rubber Ducky se.json
+
+- **Finnish (FI)** - `lang_fi`
+  - Finnish QWERTY layout
+  - Special keys: ä, ö, å
+  - AltGr combinations: $(AltGr+4), @(AltGr+2), [(AltGr+8), \(AltGr+<), ](AltGr+9), {(AltGr+7), |(AltGr+´), }(AltGr+0)
+  - Based on USB Rubber Ducky fi.json
+
+### English Variants
+
+- **US English (QWERTY)** - `lang_us`
+  - Standard US QWERTY layout
+  - No AltGr combinations needed
+  - Based on USB Rubber Ducky us.json
+
+- **UK English (QWERTY)** - `lang_gb`
+  - UK English QWERTY layout
+  - Key differences from US: @, ", #, £ positions
+  - Non-US backslash key (key next to left shift)
+  - Based on USB Rubber Ducky gb.json
+
+### Other European Languages
+
+- **Belgian (AZERTY)** - `lang_be`
+  - Belgian AZERTY layout
+  - Similar to French AZERTY with regional differences
+  - AltGr combinations: @(AltGr+2), [(AltGr+5), \(AltGr+<), ](AltGr+)), {(AltGr+4), |(AltGr+1), }(AltGr+=)
+  - Based on USB Rubber Ducky be.json
+
+- **Turkish (Q)** - `lang_tr`
+  - Turkish Q keyboard layout
+  - AltGr combinations: @(AltGr+Q), ^(AltGr+3), [(AltGr+8), \(AltGr+-), ](AltGr+9), {(AltGr+7), |(AltGr+*), }(AltGr+0), ~(AltGr+ü)
+  - Based on USB Rubber Ducky tr.json
 
 - **Greek** - `lang_gr`
   - Greek keyboard layout for Latin character input
   - Standard Greek keyboard physical key positions
   - Support for common punctuation and symbols
+
+### Central/Eastern European Languages (QWERTZ)
+
+- **Croatian (HR)** - `lang_hr`
+  - Croatian QWERTZ layout with Y/Z swap
+  - AltGr combinations: @(AltGr+V), [(AltGr+F), \(AltGr+Q), ](AltGr+G), {(AltGr+B), |(AltGr+W), }(AltGr+N)
+  - Based on USB Rubber Ducky hr.json
+
+- **Hungarian (HU)** - `lang_hu`
+  - Hungarian QWERTZ layout with Y/Z swap
+  - Complex number row arrangement unique to Hungarian
+  - AltGr combinations: $(AltGr+é), &(AltGr+C), *(AltGr+-), ;(AltGr+,), @(AltGr+V), [(AltGr+F), \(AltGr+Q), ](AltGr+G), `(AltGr+7), {(AltGr+B), |(AltGr+W), }(AltGr+N), ~(AltGr+1)
+  - Based on USB Rubber Ducky hu.json
+
+- **Slovenian (SI)** - `lang_si`
+  - Slovenian QWERTZ layout with Y/Z swap
+  - AltGr combinations: @(AltGr+V), [(AltGr+F), \(AltGr+Q), ](AltGr+G), {(AltGr+B), |(AltGr+W), }(AltGr+N)
+  - Based on USB Rubber Ducky si.json
+
+- **Slovak (SK)** - `lang_sk`
+  - Slovak QWERTZ layout with Y/Z swap
+  - Unique Slovak number/symbol arrangement
+  - AltGr combinations: $(AltGr+ô), &(AltGr+C), @(AltGr+V), [(AltGr+F), \(AltGr+Q), ](AltGr+G), `(AltGr+ú), {(AltGr+B), |(AltGr+W), }(AltGr+N), ~(AltGr+1)
+  - Based on USB Rubber Ducky sk.json
+
+### Latin American Languages
+
+- **Catalan (CA)** - `lang_ca`
+  - Catalan QWERTY layout
+  - AltGr combinations: @(AltGr+2), [(AltGr+`), \(AltGr+'), ](AltGr++), ^(AltGr+Shift+`), {(AltGr+Shift+'), |(AltGr+1), }(AltGr+Shift++), ~(AltGr+4)
+  - Based on USB Rubber Ducky ca.json
+
+- **Brazilian Portuguese (BR)** - `lang_br`
+  - Brazilian Portuguese ABNT2 layout (different from European Portuguese)
+  - Unique ABNT2 key positions and character arrangement
+  - AltGr combinations: @(AltGr+2), |(AltGr+\)
+  - Based on USB Rubber Ducky br.json
+
+- **Mexican Spanish (MX)** - `lang_mx`
+  - Mexican Spanish layout (Latin American variant)
+  - Different from European Spanish layout
+  - AltGr combinations: @(AltGr+Q), [(AltGr+´), ](AltGr++), {(AltGr+{), |(AltGr+|), }(AltGr+}), ~(AltGr+~)
+  - Based on USB Rubber Ducky mx.json
+
+### Cyrillic Languages
+
+- **Russian (RU)** - `lang_ru`
+  - Russian ЙЦУКЕН (JCUKEN) keyboard layout
+  - Allows typing Latin ASCII characters on Russian keyboards
+  - Standard Russian keyboard physical key positions
+  - Created from standard Russian keyboard layout (no official USB Rubber Ducky reference)
+
+- **Ukrainian (UA)** - `lang_ua`
+  - Ukrainian ЙЦУКЕН (JCUKEN) keyboard layout
+  - Allows typing Latin ASCII characters on Ukrainian keyboards
+  - Standard Ukrainian keyboard physical key positions
+  - Created from standard Ukrainian keyboard layout
+
+- **Bulgarian (BG)** - `lang_bg`
+  - Bulgarian БДС (BDS) keyboard layout
+  - Allows typing Latin ASCII characters on Bulgarian keyboards
+  - Standard Bulgarian keyboard physical key positions
+  - Created from standard Bulgarian keyboard layout
+
+### Other European Languages (continued)
+
+- **Dutch (NL)** - `lang_nl`
+  - Dutch QWERTY layout
+  - AltGr combinations: $(AltGr+5), @(AltGr+'), [(AltGr+8), \(AltGr+-), ](AltGr+9), ^(AltGr+6), `(AltGr+`), {(AltGr+7), |(AltGr+<), }(AltGr+0), ~(AltGr+=)
+  - Created from standard Dutch keyboard layout
+
+- **Polish (PL)** - `lang_pl`
+  - Polish QWERTY layout
+  - AltGr combinations: @(AltGr+V), [(AltGr+F), \(AltGr+Q), ](AltGr+G), {(AltGr+B), |(AltGr+W), }(AltGr+N)
+  - Created from standard Polish keyboard layout
+
+- **Romanian (RO)** - `lang_ro`
+  - Romanian QWERTY layout
+  - AltGr combinations: @(AltGr+2), [(AltGr+[), \(AltGr+\), ](AltGr+]), {(AltGr+Shift+[), |(AltGr+Shift+\), }(AltGr+Shift+])
+  - Created from standard Romanian keyboard layout
 
 ## Usage
 

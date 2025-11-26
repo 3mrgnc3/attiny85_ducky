@@ -152,16 +152,46 @@ Detailed Payload Explanations and Syntax can be found in the [Creating Custom Pa
 Else, further inspiration for creating your payloads can be found by alternatively checking out the preexisting ones made available already by [**CedArctic** in the **DigiSpark-Scripts** repo](https://github.com/CedArctic/DigiSpark-Scripts). 
 
 
-**Available Keyboard Layouts:**
-- `lang_us` - US English (from DigiKeyboardMultilang)
-- `lang_de` - German QWERTZ (from ExtendedLanguages) ✅ **TESTED & WORKING with the examples provided**
-- `lang_fr` - French AZERTY (from ExtendedLanguages)
-- `lang_gr` - Greek (from ExtendedLanguages)
-- More layouts available in the DigiKeyboardMultilang library documentation
+## Supported Keyboard Layouts
+
+This project supports **31 international keyboard layouts** through the DigiKeyboardMultilang library and the ExtendedLanguages library extension.
+
+- `lang_be` - BE Belgian
+- `lang_bg` - BG Bulgarian
+- `lang_br` - BR Brazilian Portuguese
+- `lang_ca` - CA Catalan
+- `lang_ch` - CH Swiss German
+- `lang_cs` - CS Czech
+- `lang_csq` - CSQ Czech
+- `lang_de` - DE German
+- `lang_dk` - DK Danish
+- `lang_es` - ES Spanish
+- `lang_fi` - FI Finnish
+- `lang_fr` - FR French
+- `lang_gb` - UK English
+- `lang_gr` - GR Greek
+- `lang_hr` - HR Croatian
+- `lang_hu` - HU Hungarian
+- `lang_it` - IT Italian
+- `lang_mx` - MX Mexican Spanish
+- `lang_nl` - NL Dutch
+- `lang_no` - NO Norwegian
+- `lang_pl` - PL Polish
+- `lang_pt` - PT Portuguese
+- `lang_ro` - RO Romanian
+- `lang_ru` - RU Russian ЙЦУКЕН
+- `lang_se` - SE Swedish
+- `lang_si` - SI Slovenian
+- `lang_sk` - SK Slovak
+- `lang_tr` - TR Turkish
+- `lang_ua` - UA Ukrainian
+- `lang_us` - US English
+
+**Note:** All layouts support ASCII characters 32-126 (95 printable characters) with proper modifier keys (Shift, AltGr). For detailed information about each layout, see the [ExtendedLanguages README](lib/ExtendedLanguages/README.md).
 
 ----
 
-## Some Useful Links
+## Some Useful Links that provide inspiration and resources for this project
 - [NULLByte - How to Run USB Rubber Ducky Scripts](https://null-byte.wonderhowto.com/how-to/run-usb-rubber-ducky-scripts-super-inexpensive-digispark-board-0198484/) 
 - [AZ-Delivery ATTiny85 Digispark Rev.3 Kickstarter Board](https://www.az-delivery.de/en/products/digispark-board)
 - [DigiKeyboardMultilang Library by josefkuchar](https://github.com/josefkuchar/DigiKeyboardMultilang)

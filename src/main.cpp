@@ -2,7 +2,7 @@
 #include <DigiKeyboardMultilang.h>
 #include <extendedLanguages.h>  // ExtendedLanguages - provides lang_de, lang_fr, lang_gr so far
 
-DigiKeyboardMultilang keyboard(lang_de); // IMPORTANT Declare keyboard layout! e.g., lang_us for US English
+DigiKeyboardMultilang keyboard(lang_us); // IMPORTANT Declare keyboard layout! e.g., lang_us for US English
 
 /*
 This code is automaticaly nested inside the main() function by the Arduino build system.
@@ -24,7 +24,7 @@ void setup() {
     // --- THE HID INJECTION STARTS HERE ---
     keyboard.delay(6000); // Wait 6 seconds to allow the OS to recognize the device and install drivers if needed
     keyboard.sendKeyStroke(KEY_R, KEY_MOD_GUI); // Win+R (KEY_MOD_GUI = Windows/Command key provided by ExtendedLanguages)
-    keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
+    keyboard.delay(1200); // Wait 1.2 seconds for the run dialog to open
     keyboard.println(runCmdPld); // Opens the Project Github URL using the run dialog
     // --- THE HID INJECTION ENDS HERE ---
     
