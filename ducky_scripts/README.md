@@ -5,9 +5,26 @@ This directory contains DuckyScript payloads that are automatically compiled int
 ## How It Works
 
 1. Create your payload in `payload.ducky` (required filename)
-2. Run PlatformIO build - the payload is automatically compiled to `src/main.cpp`
-3. Upload to your ATTiny85
-4. Payload executes on device startup
+2. Optionally add `ATTACKMODE` command to spoof USB device identity
+3. Run PlatformIO build - the payload is automatically compiled to `src/main.cpp`
+4. Upload to your ATTiny85
+5. Payload executes on device startup
+
+## Quick Start: USB Spoofing
+
+You can now spoof USB device identity directly in your DuckyScript payload:
+
+```duckyscript
+REM Spoof as Logitech K120 Keyboard
+ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+
+REM Your payload here
+DELAY 3000
+GUI r
+STRINGLN notepad
+```
+
+**See [docs/ATTACKMODE.md](../docs/ATTACKMODE.md) for complete documentation.**
 
 ## Supported DuckyScript Commands
 
@@ -29,6 +46,21 @@ DUCKY_LANG FR
 ```
 
 Supported languages: `US`, `BE`, `BR`, `CA_FR`, `CH_DE`, `CH_FR`, `CZ`, `DE`, `DK`, `ES`, `FI`, `FR`, `GB`, `HR`, `IT`, `NO`, `PT`, `RU`, `SI`, `SK`, `SV`, `TR`
+
+#### USB Device Configuration (ATTACKMODE)
+```
+REM Spoof USB device identity
+ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+
+REM Parameters (all optional):
+REM   VID_xxxx     - Vendor ID (hex)
+REM   PID_xxxx     - Product ID (hex)
+REM   MAN_xxx      - Manufacturer name
+REM   PROD_xxx     - Product name
+REM   SERIAL_xxx   - Serial number (hex)
+```
+
+**Note:** ATTACKMODE is parsed at build time and generates USB configuration. The ATTiny85 cannot change USB identity at runtime. See [docs/ATTACKMODE.md](../docs/ATTACKMODE.md) for details.
 
 #### Constants (DEFINE)
 ```
@@ -101,6 +133,15 @@ REM_BLOCK / END_REM            ❌ Block comments
 STRING / END_STRING blocks      ❌ Multi-line string blocks  
 STRINGLN / END_STRINGLN blocks  ❌ Multi-line stringln blocks
 ```
+
+#### Attack Mode Features
+```
+ATTACKMODE STORAGE              ❌ ATTiny85 has no storage capability
+ATTACKMODE OFF                  ❌ No power control
+Runtime USB switching           ❌ USB identity set at compile-time only
+```
+
+**Note:** `ATTACKMODE HID` with USB parameters (VID/PID/MAN/PROD/SERIAL) **IS supported** for compile-time USB configuration. See [docs/ATTACKMODE.md](../docs/ATTACKMODE.md).
 
 #### Variables & Operators
 ```

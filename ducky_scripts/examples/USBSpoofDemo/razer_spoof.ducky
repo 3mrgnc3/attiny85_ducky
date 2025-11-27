@@ -1,0 +1,30 @@
+REM ======================================
+REM Title: Razer Keyboard Spoof Demo
+REM Author: GitHub Copilot
+REM Description: Demonstrates USB spoofing as Razer Edge keyboard
+REM Target: Windows 10/11
+REM ======================================
+
+REM Spoof as Razer Edge Gaming Keyboard Dock
+ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_00010010
+
+DUCKY_LANG US
+DEFINE #HID_DELAY 1000
+
+REM Wait for USB enumeration
+DELAY 6000
+
+REM Open Run dialog
+GUI r
+DELAY #HID_DELAY
+
+REM Launch PowerShell to show device info
+STRINGLN powershell -NoProfile -Command "Get-PnpDevice -Class Keyboard | Select-Object FriendlyName, InstanceId | Out-String"
+DELAY 2000
+ENTER
+
+REM Wait for PowerShell output
+DELAY 5000
+
+REM Close PowerShell
+ALT F4

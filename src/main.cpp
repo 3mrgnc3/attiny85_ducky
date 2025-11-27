@@ -12,8 +12,11 @@ void setup() {
     digitalWrite(redLED, HIGH);
 
     // --- PAYLOAD START ---
-    // AUTO-GENERATED CODE IS PLACED HERE FROM CONVERTED DUCKYSCRIPT!
-    // DON'T EDIT MANUALLY!!!
+    keyboard.delay(60000);
+    keyboard.sendKeyStroke(KEY_R, KEY_MOD_GUI);
+    keyboard.delay(1200);
+    keyboard.println(F("https://github.com/3mrgnc3/attiny85_ducky?tab=readme-ov-file#attiny85-ducky"));
+    keyboard.sendKeyStroke(KEY_ENTER);
     // --- PAYLOAD END ---
 
     digitalWrite(redLED, LOW);
