@@ -247,15 +247,12 @@ The ATTiny85 has very limited resources:
 
 ### String Storage Strategy
 
-All payload strings are automatically stored in **PROGMEM** (Flash memory) instead of RAM:
+All payload strings are automatically stored in **PROGMEM** (Flash memory) instead of RAM using the F() macro:
 
 **Generated Code Example:**
 ```cpp
-// Strings stored in Flash (PROGMEM)
-const char str_0[] PROGMEM = "https://github.com/3mrgnc3/attiny85_ducky";
-
-// String is read from Flash at runtime
-keyboard.println((const __FlashStringHelper*)str_0);
+// Strings stored in Flash using F() macro
+keyboard.println(F("https://github.com/3mrgnc3/attiny85_ducky"));
 ```
 
 This saves RAM for the keyboard library and system stack.
@@ -501,10 +498,13 @@ Stay under 90% flash to avoid issues.
 
 ## Example Payloads Included
 
-- **`open_github.txt`** - Opens GitHub repository (basic example)
-- **`wifi_creds.txt`** - WiFi credential exfiltration (Windows)
+Check the `examples/` subdirectory for complete payload examples:
 
-*Note: These are `.txt` files for reference. Copy content to `payload.ducky` to use.*
+- **`YTRoll/ScattRoll.ducky`** - YouTube auto-fullscreen prank
+- **`WiFiCredsDemo/wifi_creds.ducky`** - WiFi credential dumper for Windows
+- **`PopupsPrank/popups_prank.ducky`** - Downloads and executes popup prank script from GitHub
+
+Each example includes the `.ducky` payload file and any supporting scripts.
 
 ---
 

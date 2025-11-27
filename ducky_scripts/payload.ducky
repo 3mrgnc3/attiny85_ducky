@@ -3,7 +3,7 @@ REM Author: ATTiny85 Ducky Project
 REM Description: Dumps saved WiFi credentials using PowerShell
 REM Target: Windows 10/11
 
-DUCKY_LANG US
+DUCKY_LANG DE
 DEFINE #HID_DELAY 1200
 
 REM Wait for OS to recognize device

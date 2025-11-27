@@ -3,7 +3,7 @@
 
 #include "attiny85_ducky.h"
 
-ATTinyDuckyKeyboard keyboard(lang_us);
+ATTinyDuckyKeyboard keyboard(lang_de);
 
 int redLED = LED_BUILTIN;
 
@@ -12,7 +12,8 @@ void setup() {
     digitalWrite(redLED, HIGH);
 
     // --- PAYLOAD START ---
-    // AUTOMATICALLY GENERATED CODE - DO NOT EDIT MANUALLY
+    // AUTO-GENERATED CODE IS PLACED HERE FROM CONVERTED DUCKYSCRIPT!
+    // DON'T EDIT MANUALLY!!!
     // --- PAYLOAD END ---
 
     digitalWrite(redLED, LOW);

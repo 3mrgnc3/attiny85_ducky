@@ -66,7 +66,7 @@
 
 // ===== Hardware Pin Definitions =====
 // Standard Digispark Rev.3 pinout
-#define LED_BUILTIN 1    // Built-in red LED on P1
+// #define LED_BUILTIN 1    // Built-in red LED on P1
 #define P0 0             // P0 - I/O
 #define P1 1             // P1 - I/O (Built-in LED)
 #define P2 2             // P2 - I/O
