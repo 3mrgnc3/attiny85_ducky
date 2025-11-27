@@ -33,11 +33,11 @@ The ATTiny85 Ducky now supports **automatic USB device configuration** via the D
 
 ```
 1. User creates payload.ducky with ATTACKMODE command:
-   ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard
+   ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky
 
 2. Pre-build script runs (pre_build_duckyscript.py):
    ├─ parse_attackmode_usb_config(payload.ducky)
-   │  └─ Extracts: VID=046d, PID=c31e, MAN=Logitech, PROD=K120 Keyboard
+   │  └─ Extracts: VID=16c0, PID=27db, MAN=DigiKey, PROD=ATTiny85 Ducky
    │
    ├─ generate_usb_config_header(config, usb_device_config.h)
    │  └─ Generates C header with USB_VID_LOW/HIGH, USB_PID_LOW/HIGH, etc.
@@ -60,7 +60,7 @@ attackmode_pattern = r'ATTACKMODE\s+(?:(?:HID|STORAGE|OFF)\s+)*(?:VID_([0-9a-fA-
 ```
 
 **Matches:**
-- `ATTACKMODE HID VID_046d PID_c31e` ✅
+- `ATTACKMODE HID VID_16c0 PID_27db` ✅
 - `ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_00010010` ✅
 - `ATTACKMODE STORAGE VID_1f75 PID_0917` ✅ (parsed but STORAGE not functional)
 - `ATTACKMODE HID` ✅ (no USB params - uses defaults)
@@ -76,21 +76,21 @@ attackmode_pattern = r'ATTACKMODE\s+(?:(?:HID|STORAGE|OFF)\s+)*(?:VID_([0-9a-fA-
 #ifndef USB_DEVICE_CONFIG_H
 #define USB_DEVICE_CONFIG_H
 
-// VID: 0x046d
-#define USB_VID_LOW     0x6d   // Little-endian low byte
-#define USB_VID_HIGH    0x04   // Little-endian high byte
+// VID: 0x16c0
+#define USB_VID_LOW     0xc0   // Little-endian low byte
+#define USB_VID_HIGH    0x16   // Little-endian high byte
 
-// PID: 0xc31e
-#define USB_PID_LOW     0x1e
-#define USB_PID_HIGH    0xc3
+// PID: 0x27db
+#define USB_PID_LOW     0xdb
+#define USB_PID_HIGH    0x27
 
-// Manufacturer: Logitech
-#define USB_VENDOR_NAME     'L','o','g','i','t','e','c','h'
-#define USB_VENDOR_NAME_LEN 8
+// Manufacturer: DigiKey
+#define USB_VENDOR_NAME     'D','i','g','i','K','e','y'
+#define USB_VENDOR_NAME_LEN 7
 
-// Product: K120 Keyboard
-#define USB_DEVICE_NAME     'K','1','2','0',' ','K','e','y','b','o','a','r','d'
-#define USB_DEVICE_NAME_LEN 13
+// Product: ATTiny85 Ducky
+#define USB_DEVICE_NAME     'A','T','T','i','n','y','8','5',' ','D','u','c','k','y'
+#define USB_DEVICE_NAME_LEN 14
 
 #endif // USB_DEVICE_CONFIG_H
 ```
@@ -99,7 +99,7 @@ attackmode_pattern = r'ATTACKMODE\s+(?:(?:HID|STORAGE|OFF)\s+)*(?:VID_([0-9a-fA-
 
 ### Basic Form
 ```duckyscript
-ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
 ```
 
 ### With Mode Prefixes
@@ -152,11 +152,11 @@ Build output shows parsed configuration:
 ```
 Parsing USB configuration from payload.ducky...
 Found USB configuration:
-  VID: 0x046d
-  PID: 0xc31e
-  Manufacturer: Logitech
-  Product: K120 Keyboard
-  Serial: 00010001
+  VID: 0x16c0
+  PID: 0x27db
+  Manufacturer: DigiKey
+  Product: ATTiny85 Ducky
+  Serial: 0001
 Generated USB config: lib/ATTinyDuckyKeyboard/src/usb_device_config.h
 Compiling DuckyScript: payload.ducky
 ```
@@ -172,9 +172,9 @@ The shared hobbyist VID (0x16c0) is free for non-commercial use.
 
 ## Examples
 
-### Logitech K120
+### DigiKey Default
 ```duckyscript
-ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
 ```
 
 ### Razer Edge

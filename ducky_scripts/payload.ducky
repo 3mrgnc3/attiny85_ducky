@@ -3,11 +3,11 @@ REM Title: Open This Project's GitHub Repository
 REM Author: 3mrgnc3
 REM Description: Opens the ATTiny85 Ducky project repository in default browser
 REM Target: Windows 10/11
-REM USB Spoofing: Logitech K120 Keyboard
+REM USB Spoofing: DigiKey ATTiny85
 REM ======================================
 
 REM Configure USB device identity (processed before compilation)
-ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
 
 DUCKY_LANG DE
 DEFINE #HID_DELAY 1200

@@ -9,8 +9,8 @@ Your ATTiny85 Ducky now supports customizable USB VID, PID, Vendor Name, and Dev
 Simply add an `ATTACKMODE` command at the top of your `ducky_scripts/payload.ducky`:
 
 ```duckyscript
-REM Spoof as Logitech K120 Keyboard
-ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+REM Configure USB identity
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
 
 REM Your payload starts here
 DELAY 3000
@@ -50,7 +50,7 @@ ATTACKMODE HID VID_413c PID_211a MAN_Dell PROD_KB216
 
 Just change VID/PID (no manufacturer/product strings):
 ```duckyscript
-ATTACKMODE HID VID_046d PID_c31e
+ATTACKMODE HID VID_16c0 PID_27db
 ```
 
 ### Method 2: Use a Preset Configuration
@@ -68,13 +68,12 @@ lib_ldf_mode = deep+
 extra_scripts = pre:pre_build_duckyscript.py
 
 # Add this line:
-build_flags = -DUSB_DEVICE_LOGITECH_KEYBOARD
+build_flags = -DUSB_DEVICE_MICROSOFT_KEYBOARD
 ```
 
 **Note:** If using `ATTACKMODE` in payload.ducky, this method is not needed.
 
 **Available Presets:**
-- `-DUSB_DEVICE_LOGITECH_KEYBOARD` - Logitech K120 (VID: 0x046d, PID: 0xc31e)
 - `-DUSB_DEVICE_MICROSOFT_KEYBOARD` - Microsoft Natural (VID: 0x045e, PID: 0x00f0)
 - `-DUSB_DEVICE_DELL_KEYBOARD` - Dell KB216 (VID: 0x413c, PID: 0x211a)
 
@@ -133,11 +132,11 @@ Edit `lib/ATTinyDuckyKeyboard/src/usb_device_config.h` and modify the defaults:
 
 USB VID/PID are 16-bit values stored in little-endian format.
 
-**Example:** Logitech VID `0x046d` (decimal 1133)
+**Example:** DigiKey VID `0x16c0` (decimal 5824)
 
-1. Split into bytes: `0x04` (high) and `0x6d` (low)
+1. Split into bytes: `0x16` (high) and `0xc0` (low)
 2. Reverse order: **low byte first**, then high byte
-3. Result: `0x6d, 0x04`
+3. Result: `0xc0, 0x16`
 
 **Quick Conversion Formula:**
 ```
@@ -150,7 +149,7 @@ Define as: 0xCD, 0xAB
 **Examples:**
 | Device | VID (hex) | PID (hex) | Low,High Format |
 |--------|-----------|-----------|-----------------|
-| Logitech K120 | 0x046d | 0xc31e | `0x6d,0x04` and `0x1e,0xc3` |
+| DigiKey | 0x16c0 | 0x27db | `0xc0,0x16` and `0xdb,0x27` |
 | Microsoft | 0x045e | 0x00f0 | `0x5e,0x04` and `0xf0,0x00` |
 | Dell | 0x413c | 0x211a | `0x3c,0x41` and `0x1a,0x21` |
 

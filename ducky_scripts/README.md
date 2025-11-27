@@ -12,11 +12,11 @@ This directory contains DuckyScript payloads that are automatically compiled int
 
 ## Quick Start: USB Spoofing
 
-You can now spoof USB device identity directly in your DuckyScript payload:
+You can now configure USB device identity directly in your DuckyScript payload:
 
 ```duckyscript
-REM Spoof as Logitech K120 Keyboard
-ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+REM Configure USB identity
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
 
 REM Your payload here
 DELAY 3000

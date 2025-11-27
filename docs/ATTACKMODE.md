@@ -19,11 +19,11 @@ ATTACKMODE HID [VID_xxxx] [PID_xxxx] [MAN_xxx] [PROD_xxx] [SERIAL_xxx]
 
 ## Examples
 
-### Basic USB Spoofing
+### Basic USB Configuration
 
 ```duckyscript
-REM Spoof as Logitech K120 Keyboard
-ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+REM Configure USB identity
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
 
 DELAY 3000
 GUI r
@@ -47,9 +47,9 @@ ATTACKMODE HID VID_045e PID_00f0 MAN_Microsoft PROD_Natural_Keyboard
 ATTACKMODE HID VID_413c PID_211a MAN_Dell PROD_KB216
 ```
 
-**Generic USB Keyboard (VID/PID only):**
+**DigiKey Default (VID/PID only):**
 ```duckyscript
-ATTACKMODE HID VID_046d PID_c31e
+ATTACKMODE HID VID_16c0 PID_27db
 ```
 
 ### Using Functions (Hak5 Style)
@@ -84,8 +84,8 @@ REM SPOOF_INNOSTOR()
 
 VID and PID must be **4-digit hexadecimal** values (without `0x` prefix):
 
-- `VID_046d` → Logitech (0x046d)
-- `PID_c31e` → Product 0xc31e
+- `VID_16c0` → DigiKey/VOTI (0x16c0)
+- `PID_27db` → Product 0x27db
 - `VID_1532` → Razer (0x1532)
 
 The pre-build script automatically converts to little-endian format for the USB descriptor.
@@ -94,7 +94,7 @@ The pre-build script automatically converts to little-endian format for the USB 
 
 Use underscores for spaces:
 - `MAN_Razer_USA` → "Razer USA"
-- `PROD_K120_Keyboard` → "K120 Keyboard"
+- `PROD_ATTiny85_Ducky` → "ATTiny85 Ducky"
 - `PROD_IS917_Mass_storage` → "IS917 Mass storage"
 
 ### Serial Numbers
@@ -155,11 +155,11 @@ When building, you'll see the parsed configuration:
 ```
 Parsing USB configuration from payload.ducky...
 Found USB configuration:
-  VID: 0x046d
-  PID: 0xc31e
-  Manufacturer: Logitech
-  Product: K120 Keyboard
-  Serial: 00010001
+  VID: 0x16c0
+  PID: 0x27db
+  Manufacturer: DigiKey
+  Product: ATTiny85 Ducky
+  Serial: 0001
 Generated USB config: ...usb_device_config.h
 ```
 
@@ -189,9 +189,9 @@ USB descriptors are cached by the OS. Solutions:
 ### Parameters not being parsed
 
 Check your syntax:
-- ✅ `ATTACKMODE HID VID_046d PID_c31e`
-- ❌ `ATTACKMODE HID VID:046d PID:c31e` (wrong separator)
-- ❌ `ATTACKMODE HID VID_0x046d` (no 0x prefix)
+- ✅ `ATTACKMODE HID VID_16c0 PID_27db`
+- ❌ `ATTACKMODE HID VID:16c0 PID:27db` (wrong separator)
+- ❌ `ATTACKMODE HID VID_0x16c0` (no 0x prefix)
 
 ## Legal & Ethical Use
 
