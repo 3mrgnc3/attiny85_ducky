@@ -1,0 +1,13 @@
+REM Title: Open GitHub Repository
+REM Author: 3mrgnc3
+REM Description: Opens the ATTiny85 Ducky project repository in default browser
+REM Target: Windows 10/11
+
+DUCKY_LANG US
+DEFINE #HID_DELAY 1200
+
+DELAY 6000
+GUI r
+DELAY #HID_DELAY
+STRINGLN https://github.com/3mrgnc3/attiny85_ducky?tab=readme-ov-file#attiny85-ducky
+ENTER

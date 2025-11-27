@@ -1,0 +1,15 @@
+{
+    "name": "ATTinyDuckyKeyboard",
+    "keywords": "digispark, keyboard, hid, language, emulate, usb, attiny85, ducky",
+    "description": "Local keyboard HID library for ATTiny85 Digispark with multi-language support",
+    "version": "1.0.0",
+    "frameworks": "arduino",
+    "platforms": "atmelavr",
+    "authors": [
+        {
+            "name": "3mrgnc3",
+            "maintainer": true
+        }
+    ],
+    "license": "MIT"
+}

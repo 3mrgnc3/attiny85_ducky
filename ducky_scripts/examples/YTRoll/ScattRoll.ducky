@@ -1,0 +1,22 @@
+REM ======================================
+REM Title: ScattRoll - YouTube Auto-Fullscreen
+REM Author: 3mrgnc3
+REM Target: Windows 10/11 with chrome based default browser
+REM ======================================
+
+DUCKY_LANG US
+DEFINE #HID_DELAY 1200
+
+REM Wait 6 seconds for OS to recognize device and install drivers
+DELAY 6000
+
+REM Open Run dialog (Win+R)
+GUI r
+DELAY #HID_DELAY
+
+REM Open ScattRoll URL
+STRINGLN https://youtu.be/Hy8kmNEo1i8
+
+REM Press 'f' for YouTube fullscreen after 4 seconds
+DELAY 4000
+STRINGLN f
