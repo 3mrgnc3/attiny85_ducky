@@ -10,7 +10,7 @@ Simply add an `ATTACKMODE` command at the top of your `ducky_scripts/payload.duc
 
 ```duckyscript
 REM Configure USB identity
-ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
 
 REM Your payload starts here
 DELAY 3000
@@ -35,7 +35,7 @@ All parameters are optional. Only include what you want to customize.
 
 Spoof as Razer keyboard:
 ```duckyscript
-ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_00010010
+ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_13370010
 ```
 
 Spoof as Microsoft keyboard:

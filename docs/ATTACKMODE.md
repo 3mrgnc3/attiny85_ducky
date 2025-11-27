@@ -23,7 +23,7 @@ ATTACKMODE HID [VID_xxxx] [PID_xxxx] [MAN_xxx] [PROD_xxx] [SERIAL_xxx]
 
 ```duckyscript
 REM Configure USB identity
-ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
 
 DELAY 3000
 GUI r
@@ -34,7 +34,7 @@ STRINGLN notepad
 
 **Razer Edge Keyboard:**
 ```duckyscript
-ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_00010010
+ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_13370010
 ```
 
 **Microsoft Natural Keyboard:**
@@ -100,7 +100,7 @@ Use underscores for spaces:
 ### Serial Numbers
 
 Serial numbers should be hexadecimal strings:
-- `SERIAL_00010001` → "00010001"
+- `SERIAL_13370001` → "00010001"
 - `SERIAL_ABCD1234` → "ABCD1234"
 
 ## Compatibility Notes

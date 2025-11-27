@@ -61,7 +61,7 @@ attackmode_pattern = r'ATTACKMODE\s+(?:(?:HID|STORAGE|OFF)\s+)*(?:VID_([0-9a-fA-
 
 **Matches:**
 - `ATTACKMODE HID VID_16c0 PID_27db` ✅
-- `ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_00010010` ✅
+- `ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_13370010` ✅
 - `ATTACKMODE STORAGE VID_1f75 PID_0917` ✅ (parsed but STORAGE not functional)
 - `ATTACKMODE HID` ✅ (no USB params - uses defaults)
 
@@ -99,7 +99,7 @@ attackmode_pattern = r'ATTACKMODE\s+(?:(?:HID|STORAGE|OFF)\s+)*(?:VID_([0-9a-fA-
 
 ### Basic Form
 ```duckyscript
-ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
 ```
 
 ### With Mode Prefixes
@@ -174,12 +174,12 @@ The shared hobbyist VID (0x16c0) is free for non-commercial use.
 
 ### DigiKey Default
 ```duckyscript
-ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
 ```
 
 ### Razer Edge
 ```duckyscript
-ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_00010010
+ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_13370010
 ```
 
 ### Microsoft Natural

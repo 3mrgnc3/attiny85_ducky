@@ -16,7 +16,7 @@ You can now configure USB device identity directly in your DuckyScript payload:
 
 ```duckyscript
 REM Configure USB identity
-ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_0001
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
 
 REM Your payload here
 DELAY 3000
@@ -50,7 +50,7 @@ Supported languages: `US`, `BE`, `BR`, `CA_FR`, `CH_DE`, `CH_FR`, `CZ`, `DE`, `D
 #### USB Device Configuration (ATTACKMODE)
 ```
 REM Spoof USB device identity
-ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_00010001
+ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_13370001
 
 REM Parameters (all optional):
 REM   VID_xxxx     - Vendor ID (hex)
@@ -120,6 +120,118 @@ SHIFT TAB           REM Shift + Tab
 ```
 
 **Available Modifiers:** `GUI`, `CTRL`, `ALT`, `SHIFT`
+
+---
+
+## Extra Commands Features
+
+The ATTiny85 Ducky compiler includes custom extensions beyond standard DuckyScript for enhanced payload capabilities.
+
+### Random String Generation
+
+Generate random strings at compile-time for creating unique identifiers, session tokens, or randomized payloads.
+
+#### RAND_HEX [length]
+Generates random hexadecimal string (characters: 0-9a-f).
+```
+STRINGLN RAND_HEX          REM Generates 2 hex chars (e.g., "a3", "7f")
+STRINGLN RAND_HEX 8        REM Generates 8 hex chars (e.g., "2f4a9c1b")
+STRINGLN RAND_HEX 16       REM Generates 16 hex chars (e.g., "7eb423994619364f")
+```
+**Default length:** 2 characters
+
+#### RAND_NUM [length]
+Generates random numeric string (digits: 0-9).
+```
+STRINGLN RAND_NUM          REM Generates 1 digit (e.g., "7")
+STRINGLN RAND_NUM 4        REM Generates 4 digits (e.g., "1829")
+STRINGLN RAND_NUM 10       REM Generates 10 digits (e.g., "0712998453")
+```
+**Default length:** 1 character
+
+#### RAND_ALPHA [length]
+Generates random lowercase alphabetic string (letters: a-z).
+```
+STRINGLN RAND_ALPHA        REM Generates 1 lowercase letter (e.g., "k")
+STRINGLN RAND_ALPHA 6      REM Generates 6 lowercase letters (e.g., "mowkph")
+STRINGLN RAND_ALPHA 12     REM Generates 12 lowercase letters (e.g., "vrtxaoovrglm")
+```
+**Default length:** 1 character
+
+#### RAND_ALPHA_UPPER [length]
+Generates random uppercase alphabetic string (letters: A-Z).
+```
+STRINGLN RAND_ALPHA_UPPER     REM Generates 1 uppercase letter (e.g., "K")
+STRINGLN RAND_ALPHA_UPPER 4   REM Generates 4 uppercase letters (e.g., "CXZG")
+STRINGLN RAND_ALPHA_UPPER 8   REM Generates 8 uppercase letters (e.g., "MZPQWKRT")
+```
+**Default length:** 1 character
+
+#### RAND_ALPHANUM [length]
+Generates random alphanumeric string, lowercase (characters: a-z, 0-9).
+```
+STRINGLN RAND_ALPHANUM        REM Generates 2 chars (e.g., "4c", "p9")
+STRINGLN RAND_ALPHANUM 8      REM Generates 8 chars (e.g., "xywz7la3")
+STRINGLN RAND_ALPHANUM 16     REM Generates 16 chars (e.g., "k9w2f7m4p1v8s3x6")
+```
+**Default length:** 2 characters
+
+#### RAND_ALPHANUM_UPPER [length]
+Generates random alphanumeric string, uppercase (characters: A-Z, 0-9).
+```
+STRINGLN RAND_ALPHANUM_UPPER     REM Generates 2 chars (e.g., "ET", "K4")
+STRINGLN RAND_ALPHANUM_UPPER 6   REM Generates 6 chars (e.g., "PNC1GK")
+STRINGLN RAND_ALPHANUM_UPPER 12  REM Generates 12 chars (e.g., "A7K9M2W5F3P8")
+```
+**Default length:** 2 characters
+
+#### Practical Examples
+
+**Generate unique session identifier:**
+```
+DEFINE #SESSION_ID RAND_HEX 16
+STRINGLN Session: #SESSION_ID
+```
+
+**Create randomized filename:**
+```
+STRINGLN log_RAND_ALPHANUM_8.txt
+```
+
+**Generate temporary password:**
+```
+STRINGLN TempPass_RAND_ALPHANUM_UPPER 12
+```
+
+**Inline usage in complex strings:**
+```
+STRINGLN curl -X POST https://api.example.com/data?token=RAND_HEX_32
+```
+
+**PowerShell variable with random value:**
+```
+STRINGLN $sessionToken="RAND_ALPHANUM_UPPER 16"; Write-Host "Token: $sessionToken"
+```
+
+#### Important Notes
+
+- **Compile-time generation:** Random strings are generated during compilation, not at runtime
+- **Deterministic per build:** Each build generates new random values, but values are fixed in the compiled binary
+- **Multiple instances:** Each RAND command in your payload generates a separate random string
+- **No repetition guarantee:** While unlikely with sufficient length, duplicate values are possible across different RAND calls
+
+**Example demonstrating multiple independent random values:**
+```
+REM Each RAND generates different value
+STRINGLN ID1: RAND_HEX 8
+STRINGLN ID2: RAND_HEX 8
+STRINGLN ID3: RAND_HEX 8
+
+REM Compiled output example:
+REM   keyboard.println(F("ID1: a3f7c2d9"));
+REM   keyboard.println(F("ID2: 8b4e1f6a"));
+REM   keyboard.println(F("ID3: 5c9d2a7f"));
+```
 
 ---
 

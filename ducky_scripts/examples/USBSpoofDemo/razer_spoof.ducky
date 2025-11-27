@@ -6,7 +6,7 @@ REM Target: Windows 10/11
 REM ======================================
 
 REM Spoof as Razer Edge Gaming Keyboard Dock
-ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_00010010
+ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_13370010
 
 DUCKY_LANG US
 DEFINE #HID_DELAY 1000

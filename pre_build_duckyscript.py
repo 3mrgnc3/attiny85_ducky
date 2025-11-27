@@ -21,7 +21,7 @@ def parse_attackmode_usb_config(payload_file):
     Parse ATTACKMODE commands from DuckyScript to extract USB configuration
 
     Supports syntax like:
-    ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_00010010
+    ATTACKMODE HID VID_1532 PID_011e MAN_Razer PROD_Edge SERIAL_13370010
 
     Returns dict with keys: vid, pid, manufacturer, product, serial
     """

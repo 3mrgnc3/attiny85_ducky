@@ -4,6 +4,9 @@ REM Author: 3mrgnc3
 REM Target: Windows 10/11 with chrome based default browser
 REM ======================================
 
+REM Configure USB device identity (processed before compilation)
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
+
 DUCKY_LANG US
 DEFINE #HID_DELAY 1200
 

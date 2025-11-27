@@ -7,6 +7,9 @@ REM Credit to I Am Jakoby Origional Rage-PopUps Prank ;)
 REM Original script idea from: github.com/I-Am-Jakoby
 REM ======================================
 
+REM Configure USB device identity (processed before compilation)
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
+
 DUCKY_LANG UK
 DEFINE #HID_DELAY 1200
 

@@ -22,8 +22,8 @@
 #define USB_DEVICE_NAME     'A','T','T','i','n','y','8','5',' ','D','u','c','k','y'
 #define USB_DEVICE_NAME_LEN 14
 
-// Serial: 0001
-#define USB_SERIAL_NUMBER     '0','0','0','1'
+// Serial: 1337
+#define USB_SERIAL_NUMBER     '1','3','3','7'
 #define USB_SERIAL_NUMBER_LEN 4
 
 #endif // USB_DEVICE_CONFIG_H
