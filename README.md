@@ -204,42 +204,38 @@ Check out the `WiFiCredsDemo` or `AddRDPAdminAccount` for two example of executi
 -----
 ## Simple Example Payload to execute a ScattRoll URL on Windows:
 
-Modify the `src/main.cpp` file as follows:
+Modify the `ducky_scripts\payload.ducky` file as follows:
 
-```cpp
-#include <Arduino.h>
-#include <DigiKeyboardMultilang.h>
-#include <extendedLanguages.h> // Include ExtendedLanguages for additional layouts
+```ducky
+REM ======================================
+REM Title: ScattRoll - YouTube Auto-Fullscreen
+REM Author: 3mrgnc3
+REM Target: Windows 10/11 with chrome based default browser
+REM ======================================
 
-DigiKeyboardMultilang keyboard(lang_de); // Use lang_de for German QWERTZ layout (or lang_us for US English)
+REM Configure USB device identity (processed before compilation)
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
 
-const char* runCmdPld = "https://youtu.be/Hy8kmNEo1i8"; // ScattRoll URL Example
+DUCKY_LANG US
+DEFINE #HID_DELAY 1200
 
-int redLED = 1;
+REM Wait 6 seconds for OS to recognize device and install drivers
+DELAY 6000
 
-void setup() {
-    pinMode(redLED, OUTPUT); // Initialize the RED LED pin as an output
-    digitalWrite(redLED, HIGH); // Turn on the RED LED while executing payload
-    
-    // --- THE HID PAYLOAD STARTS HERE ---
-    keyboard.delay(5000); // Wait 5 seconds to allow the OS to recognize the device
-    keyboard.sendKeyStroke(KEY_R, KEY_MOD_GUI); // Win+R (0x08 = Left GUI/Windows key modifier)
-    keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
-    keyboard.println(runCmdPld); // Open a ScattRoll URL in the run dialog
-    keyboard.delay(3000); // Wait 3 seconds for the browser to open
-    keyboard.println("f");// YouTube fullscreen shortcut key = 'f'
-    // --- THE HID PAYLOAD ENDS HERE ---
-    
-    digitalWrite(redLED, LOW); // Turn off the RED LED after executing payload
-}
+REM Open Run dialog (Win+R)
+GUI r
+DELAY #HID_DELAY
 
-void loop() {
-    // the loop function is intentionally left empty But if you want to repeat the payload,
-    // you can add code here with your desired logic and delays instead of in setup().
-}
+REM Open ScattRoll URL
+STRINGLN https://youtu.be/Hy8kmNEo1i8
+
+REM Press 'f' for YouTube fullscreen after 4 seconds
+DELAY 4000
+STRINGLN f
+
 ```
 
-Detailed Payload Explanations and Syntax can be found in the [Creating Custom Payloads](https://github.com/3mrgnc3/attiny85_ducky/wiki/Creating-Custom-Payloads) wiki page.
+Detailed Payload Explanations and Syntax can be found in the [Wiki](https://github.com/3mrgnc3/attiny85_ducky/wiki) page.
 
 
 Else, further inspiration for creating your payloads can be found by alternatively checking out the preexisting ones made available already by [**CedArctic** in the **DigiSpark-Scripts** repo](https://github.com/CedArctic/DigiSpark-Scripts). 
