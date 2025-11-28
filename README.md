@@ -2,7 +2,7 @@
 
 ### A Cheap "Disposable" Alternative to the Hak5 USB RubberDucky
 
-This [Platformio Project](https://docs.platformio.org/en/latest/projectconf/index.html) Repository utilizes the [AZ-Delivery ATTiny85 Digispark Rev.3 Kickstarter](https://www.az-delivery.de/en/products/digispark-board) as a USB RubberDucky-like device capable of executing pre-programmed keystroke injection attacks. It leverages the DigiKeyboardMultilang library and extends this with the ExtendedLanguages library to simulate keyboard inputs using a wider range of keyboard layouts, allowing for versatile payload delivery.
+This [Platformio Project](https://docs.platformio.org/en/latest/projectconf/index.html) Repository utilizes the [ATTiny85 Digispark Rev.3 Kickstarter](https://www.az-delivery.de/en/products/digispark-board) as a USB RubberDucky-like device capable of executing pre-programmed keystroke injection attacks. It leverages the DigiKeyboard library and extends this with the an expanded library to simulate keyboard inputs using a wider range of keyboard layouts, allowing for versatile payload delivery.
 
 ![ATTiny85 Ducky](images/rev3.png)
 
@@ -14,13 +14,7 @@ This project is intended for authorised security testing and educational purpose
 ## :rotating_light: Only test/use your payloads in a safe and legal environment! :rotating_light:
 
 
-## Features
-- Utilizes the DigiKeyboardMultilang library for multi-language keyboard support.
-- **ExtendedLanguages library** - Custom library that extends DigiKeyboardMultilang with additional keyboard layouts for German, French, and Greek Keyboards
-- **Example Payloads** - Pre-configured examples in the `examples/` directory.
-- **Simple setup and programming process** using the PlatformIO project environment provided.
-
-## Getting Started
+# Getting Started
 
 Clone this repository to your local machine.
 
