@@ -73,7 +73,7 @@ GUI r
 STRINGLN notepad
 ```
 
-**See [docs/ATTACKMODE.md](../docs/ATTACKMODE.md) for complete documentation.**
+**See [docs/ATTACKMODE.md](https://github.com/3mrgnc3/attiny85_ducky/blob/main/docs/ATTACKMODE.md) for complete documentation.**
 
 ## Supported DuckyScript Commands
 
@@ -109,7 +109,7 @@ REM   PROD_xxx     - Product name
 REM   SERIAL_xxx   - Serial number (hex)
 ```
 
-**Note:** ATTACKMODE is parsed at build time and generates USB configuration. The ATTiny85 cannot change USB identity at runtime. See [docs/ATTACKMODE.md](../docs/ATTACKMODE.md) for details.
+**Note:** ATTACKMODE is parsed at build time and generates USB configuration. The ATTiny85 cannot change USB identity at runtime. See [docs/ATTACKMODE.md](https://github.com/3mrgnc3/attiny85_ducky/blob/main/docs/ATTACKMODE.md)for details.
 
 #### Constants (DEFINE)
 ```
