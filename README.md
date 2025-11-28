@@ -39,32 +39,140 @@ Install the [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?it
 
 During setup, drivers and required libraries will be automatically downloaded to the `.pio` directory in the project folder. however if there are any issue with driver installation, a copy of the bootloader drivers is provided in the `drivers/` folder as a backup option for manual installation. a README with instructions is also provided in the `drivers/` folder to guide you through the manual installation process if needed.
 
+
+# DuckyScript for ATTiny85 Ducky
+
+This tool now supports DuckyScript payloads that are automatically compiled into C++ code for the Digispark ATTiny85 Rev.3.
+
 #### Uploading the Default Payload
+
 It is recommended to try out the default payload first to check that everything is working. This is in the `src/main.cpp` file by default and opens the GitHub project URL in the default browser. this is that same payload provide in the `examples/DemoOpenProjectRepo/` directory. 
 
 :exclamation: `Remember to set the correct keyboard layout.`
-e.g. change `DigiKeyboardMultilang keyboard(lang_de);` to `DigiKeyboardMultilang keyboard(lang_us);` for US English Keyboard layouts insted of using the default German QWERTZ layout provided.
 
-Default Payload Code Section in `src/main.cpp`:
-```cpp
-const char* runCmdPld = "https://github.com/3mrgnc3/attiny85_ducky"; // Open URL Example
 
-int redLED = 1;
+## How It Works
 
-void setup() {
-    pinMode(redLED, OUTPUT); // Initialize the RED LED pin as an output
-    digitalWrite(redLED, HIGH); // Turn on the RED LED while executing payload
-    
-    // --- THE HID INJECTION STARTS HERE ---
-    keyboard.delay(6000); // Wait 6 seconds to allow the OS to recognize the device and install drivers if needed
-    keyboard.sendKeyStroke(KEY_R, KEY_E); // Win+R (0x08 = Left GUI/Windows key modifier)
-    keyboard.delay(800); // Wait 0.8 seconds for the run dialog to open
-    keyboard.println(runCmdPld); // Opens the Project Github URL using the run dialog
-    // --- THE HID INJECTION ENDS HERE ---
-    
-    digitalWrite(redLED, LOW); // Turn off the RED LED after executing payload
-}
+1. Create your payload in `payload.ducky` (required filename)
+2. Optionally add `ATTACKMODE` command to spoof USB device identity
+3. Run PlatformIO build - the payload is automatically compiled to `src/main.cpp`
+4. Upload to your ATTiny85
+5. Payload executes on device startup
+
+## Quick Start: USB Spoofing
+
+You can now configure USB device identity directly in your DuckyScript payload:
+
+```duckyscript
+REM Configure USB identity
+ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
+
+REM Your payload here
+DELAY 3000
+GUI r
+STRINGLN notepad
 ```
+
+**See [docs/ATTACKMODE.md](../docs/ATTACKMODE.md) for complete documentation.**
+
+## Supported DuckyScript Commands
+
+The ATTiny85 Ducky compiler supports a **subset** of the full DuckyScript 3.0 specification. Only commands compatible with the DigiKeyboard library and ATTiny85 hardware constraints are supported.
+
+### ✅ Supported Commands
+
+#### Comments
+```
+REM This is a comment
+REM Comments are ignored by the compiler
+```
+
+#### Language Configuration
+```
+DUCKY_LANG US
+DUCKY_LANG DE
+DUCKY_LANG FR
+```
+
+Supported languages: `US`, `BE`, `BR`, `CA_FR`, `CH_DE`, `CH_FR`, `CZ`, `DE`, `DK`, `ES`, `FI`, `FR`, `GB`, `HR`, `IT`, `NO`, `PT`, `RU`, `SI`, `SK`, `SV`, `TR`
+
+#### USB Device Configuration (ATTACKMODE)
+```
+REM Spoof USB device identity
+ATTACKMODE HID VID_046d PID_c31e MAN_Logitech PROD_K120_Keyboard SERIAL_13370001
+
+REM Parameters (all optional):
+REM   VID_xxxx     - Vendor ID (hex)
+REM   PID_xxxx     - Product ID (hex)
+REM   MAN_xxx      - Manufacturer name
+REM   PROD_xxx     - Product name
+REM   SERIAL_xxx   - Serial number (hex)
+```
+
+**Note:** ATTACKMODE is parsed at build time and generates USB configuration. The ATTiny85 cannot change USB identity at runtime. See [docs/ATTACKMODE.md](../docs/ATTACKMODE.md) for details.
+
+#### Constants (DEFINE)
+```
+DEFINE #SERVER example.com
+DEFINE #WAIT 1000
+
+STRING https://#SERVER
+DELAY #WAIT
+```
+
+#### Delays
+```
+DELAY 1000          REM Wait 1000 milliseconds (1 second)
+DELAY 500           REM Wait 500ms
+```
+
+**Note:** Minimum delay value is implementation-dependent. Use `DELAY 100` or higher for reliability.
+
+#### String Injection
+```
+STRING Hello World                    REM Type text (no newline)
+STRINGLN Hello World                  REM Type text with ENTER at end
+
+STRING https://github.com/3mrgnc3/attiny85_ducky
+STRINGLN The quick brown fox jumps over the lazy dog
+```
+
+**All strings are stored in PROGMEM** to save precious RAM on the ATTiny85 (512 bytes total).
+
+#### Special Keys
+```
+ENTER               REM Press Enter/Return key
+ESCAPE              REM Press Escape key
+TAB                 REM Press Tab key
+SPACE               REM Press Space bar
+
+UPARROW             REM Press Up arrow
+DOWNARROW           REM Press Down arrow
+LEFTARROW           REM Press Left arrow
+RIGHTARROW          REM Press Right arrow
+```
+
+#### Modifier Key Combinations
+```
+GUI r               REM Windows Key + R (Run dialog)
+GUI d               REM Windows Key + D (Show desktop)
+
+CTRL c              REM Control + C (Copy)
+CTRL v              REM Control + V (Paste)
+CTRL ALT t          REM Control + Alt + T (Terminal on Linux)
+CTRL ALT DELETE     REM Control + Alt + Delete
+
+ALT F4              REM Alt + F4 (Close window)
+ALT TAB             REM Alt + Tab (Switch windows)
+
+SHIFT TAB           REM Shift + Tab
+```
+
+**Available Modifiers:** `GUI`, `CTRL`, `ALT`, `SHIFT`
+
+---
+
+
 
 
 #### Building & Uploading the example Payload
@@ -89,16 +197,7 @@ This means you need to connect the device within 60 seconds after clicking the u
 Once uploaded, the device will execute the pre-programmed payload when plugged into a target machine. The default provided and all the example payloads are designed for Windows systems and will pause for 6 seconds to allow the OS to recognize the device and auto-install any required drivers before executing the payload. If you don'y want to execute the payload immediately, you simply need to unplug it within 6 secomd of the RED LED lighting up.
 
 ## Customization
-To customize the payload, modify the `setup()` and `loop()` functions in `src/main.cpp`. 
 
-In addition to the 6 second delay before payload execution, you can also add your own delays in the payload code itself using `keyboard.delay(ms);` where `ms` is the number of milliseconds to wait.
-
-#### Building & Uploading the Your Own Payloads
-Once the demo payload was successful, you should then proceed to modify the payload or try out other example payloads provided in the `examples/` directory. The simplest way to do this is to copy the `main.cpp` file from the example folder you want to try into the `src/` directory, replacing the existing `main.cpp` file. 
-
-When developing your own payloads, you can refer to the example payloads for guidance, but should start by modifiying the lines between the comment lines `// --- THE HID INJECTION STARTS HERE ---` & `// --- THE HID INJECTION ENDS HERE ---` to create the logic of your HID injection commands. 
-
-Custom values such as adjustable string parameters can be set in the top of the file. e.g. `const char* runCmdPld = "https://youtu.be/Hy8kmNEo1i8";` or `cmd.exe /c netsh wlan show profile` etc.
 
 Check out the `WiFiCredsDemo` or `AddRDPAdminAccount` for two example of execution in a administrator context in powershell with minimal user interaction to bypass UAC.
 
