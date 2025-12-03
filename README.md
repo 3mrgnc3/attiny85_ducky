@@ -185,7 +185,11 @@ IMPORTANT!: `Disconnect the DigiSpark ATTiny85 device`, then without anything pl
 On a successfull compilation, `you will have 60 seconds to connect the device` where its bootloader is listening for upload.
 ![Connect Device](images/connect_device.png)
 
-Unlike other PlatformIO projects, you must manually connect the DigiSpark ATTiny85 device **after** clicking the upload button, as the bootloader only listens for a short time after connection. This is because it uses the Micronucleus bootloader which has this limitation.
+ --------
+## IMPORTANT!!!
+### _Unlike other PlatformIO projects, you must manually connect the DigiSpark ATTiny85 device **after** clicking the upload button, as the bootloader only listens for a short time after connection. This is because it uses the Micronucleus bootloader which has this limitation._
+
+---------
 
 Micronucleus is different from typical USB bootloaders in that it only listens for a short period after the device is plugged in using its own dedicated interface available when the correct drivers are installed. No Serial interface is available during this time and the Micronucleus driver does not create a COM port like other bootloaders.
 
@@ -202,7 +206,7 @@ Check out the `WiFiCredsDemo` or `AddRDPAdminAccount` for two example of executi
 -----
 ## Simple Example Payload to execute a ScattRoll URL on Windows:
 
-Modify the `ducky_scripts\payload.ducky` file as follows:
+Modify the `ducky_scripts/payload.ducky` file as follows:
 
 ```ducky
 REM ======================================
