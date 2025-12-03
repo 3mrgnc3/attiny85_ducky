@@ -14,31 +14,6 @@ This project is intended for authorised security testing and educational purpose
 ## :rotating_light: Only test/use your payloads in a safe and legal environment! :rotating_light:
 
 
-# Getting Started
-
-Clone this repository to your local machine.
-
-```
-git clone https://github.com/yourusername/attiny85_ducky.git
-
-```
-
-
-Open the included project workspace file `attiny85_ducky.code-workspace` in [Visual Studio Code](https://code.visualstudio.com/).
-
-```
-cd attiny85_ducky
-code .vscode/attiny85_ducky.code-workspace
-```
-
-#### Setup Extensions Dependencies & Drivers
-Install the [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [PlatformIO IDE VS Code Extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) if you haven't already. (see: [PlatformIO Intsall Guide](https://platformio.org/install/ide?install=vscode)
-
-![C/C++ Extension Pack](images/cpp_extension_pack.png)
-![PlatformIO IDE](images/platformio_ide.png)
-
-During setup, drivers and required libraries will be automatically downloaded to the `.pio` directory in the project folder. however if there are any issue with driver installation, a copy of the bootloader drivers is provided in the `drivers/` folder as a backup option for manual installation. a README with instructions is also provided in the `drivers/` folder to guide you through the manual installation process if needed.
-
 
 # DuckyScript for ATTiny85 Ducky
 
@@ -46,15 +21,15 @@ This tool now supports DuckyScript payloads that are automatically compiled into
 
 #### Uploading the Default Payload
 
-It is recommended to try out the default payload first to check that everything is working. This is in the `src/main.cpp` file by default and opens the GitHub project URL in the default browser. this is that same payload provide in the `examples/DemoOpenProjectRepo/` directory. 
+It is recommended to try out the default payload first to check that everything is working. This is in the `src/main.cpp` file by default and opens the GitHub project URL in the default browser. this is that same payload provide in the `ducky_scripts/examples/DemoOpenProjectRepo/` directory. 
 
 :exclamation: `Remember to set the correct keyboard layout.`
 
 
 ## How It Works
 
-1. Create your payload in `payload.ducky` (required filename)
-2. Optionally add `ATTACKMODE` command to spoof USB device identity
+1. Create your payload in `ducky_scripts/payload.ducky` (required filename)
+2. Optionally add `ATTACKMODE` command to spoof USB device identity (see examples)
 3. Run PlatformIO build - the payload is automatically compiled to `src/main.cpp`
 4. Upload to your ATTiny85
 5. Payload executes on device startup
@@ -173,7 +148,30 @@ SHIFT TAB           REM Shift + Tab
 ---
 
 
+# Getting Started
 
+Clone this repository to your local machine.
+
+```
+git clone https://github.com/yourusername/attiny85_ducky.git
+
+```
+
+
+Open the included project workspace file `attiny85_ducky.code-workspace` in [Visual Studio Code](https://code.visualstudio.com/).
+
+```
+cd attiny85_ducky
+code .vscode/attiny85_ducky.code-workspace
+```
+
+#### Setup Extensions Dependencies & Drivers
+Install the [C/C++ Extension Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack) and [PlatformIO IDE VS Code Extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) if you haven't already. (see: [PlatformIO Intsall Guide](https://platformio.org/install/ide?install=vscode)
+
+![C/C++ Extension Pack](images/cpp_extension_pack.png)
+![PlatformIO IDE](images/platformio_ide.png)
+
+During setup, drivers and required libraries will be automatically downloaded to the `.pio` directory in the project folder. however if there are any issue with driver installation, a copy of the bootloader drivers is provided in the `drivers/` folder as a backup option for manual installation. a README with instructions is also provided in the `drivers/` folder to guide you through the manual installation process if needed.
 
 #### Building & Uploading the example Payload
 In the PlatformIO toolbar, click the `build` button to ensure that the build works and does an auto-setup / download of the **digispark-tiny** and **DigiKeyboardMultilang** code to the `.pio` directory in the project.
