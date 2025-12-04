@@ -7,3 +7,5 @@
 /copilot-instructions.md
 /wiki
 /drivers/*/
+/src/main.cpp
+/ducky_scripts/payload.ducky
